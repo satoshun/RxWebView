@@ -1,1 +1,2 @@
-include ':rectivex'
+include ':reactivex'
+include ':app'
