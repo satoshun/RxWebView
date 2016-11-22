@@ -5,6 +5,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.webkit.WebViewClient;
 
+import com.github.satoshun.reactivex.webview.data.OnPageStarted;
+import com.github.satoshun.reactivex.webview.data.RxWebViewData;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -39,7 +42,7 @@ public class RxWebViewTest {
     TestObserver<Void> observer = RxWebView.onPageFinished(activity.webview, client)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com");
+            activity.webview.loadUrl("https://www.google.com/");
           }
         })
         .subscribeOn(AndroidSchedulers.mainThread())
@@ -63,7 +66,7 @@ public class RxWebViewTest {
     TestObserver<Void> observer = RxWebView.onPageStarted(activity.webview, client)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com");
+            activity.webview.loadUrl("https://www.google.com/");
           }
         })
         .subscribeOn(AndroidSchedulers.mainThread())
@@ -77,7 +80,7 @@ public class RxWebViewTest {
     TestObserver<Void> observer = RxWebView.onPageStarted(activity.webview, client)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com");
+            activity.webview.loadUrl("https://www.google.com/");
           }
         })
         .subscribeOn(AndroidSchedulers.mainThread())
@@ -89,21 +92,23 @@ public class RxWebViewTest {
 
   @Test public void all() throws Exception {
     WebViewClient client = new WebViewClient();
-    TestObserver<RxWebView.Event> o = RxWebView.all(activity.webview, client)
-        .filter(new Predicate<RxWebView.Event>() {
-          @Override public boolean test(RxWebView.Event event) throws Exception {
-            return event == RxWebView.Event.ON_PAGE_STARTED;
+    TestObserver<RxWebViewData> o = RxWebView.all(activity.webview, client)
+        .filter(new Predicate<RxWebViewData>() {
+          @Override public boolean test(RxWebViewData data) throws Exception {
+            return data instanceof OnPageStarted;
           }
         })
         .take(1)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com");
+            activity.webview.loadUrl("https://www.google.com/");
           }
         })
         .subscribeOn(AndroidSchedulers.mainThread())
         .test();
     o.await(1, TimeUnit.SECONDS);
-    o.assertValue(RxWebView.Event.ON_PAGE_STARTED);
+
+    OnPageStarted data = (OnPageStarted) o.values().get(0);
+    assertThat(data.getUrl(), is("https://www.google.com/"));
   }
 }
