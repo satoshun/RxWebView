@@ -75,6 +75,11 @@ public class RxWebViewTest {
   @Test public void onPageStarted_dispose() throws Exception {
     WebViewClient client = new WebViewClient();
     TestObserver<Void> observer = RxWebView.onPageStarted(activity.webview, client)
+        .doOnSubscribe(new Consumer<Disposable>() {
+          @Override public void accept(Disposable disposable) throws Exception {
+            activity.webview.loadUrl("https://www.google.com");
+          }
+        })
         .subscribeOn(AndroidSchedulers.mainThread())
         .test();
     assertThat(observer.isDisposed(), is(false));
