@@ -6,7 +6,7 @@ this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It 
 ## install
 
 ```
-compile 'com.github.satoshun:RxWebView:0.3.0'
+compile 'com.github.satoshun:RxWebView:1.0.0'
 ```
 
 
