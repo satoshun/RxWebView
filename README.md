@@ -3,7 +3,7 @@
 ## install
 
 ```
-compile 'com.github.satoshun:RxWebView:0.2.1'
+compile 'com.github.satoshun:RxWebView:0.3.0'
 ```
 
 
