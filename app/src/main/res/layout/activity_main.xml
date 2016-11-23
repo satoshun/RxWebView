@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.github.satoshun.reactivex.webview.example.MainActivity">
 
     <WebView
@@ -16,4 +17,10 @@
         android:id="@+id/web2"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
-</RelativeLayout>
+
+    <WebView
+        android:id="@+id/web3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+</LinearLayout>
