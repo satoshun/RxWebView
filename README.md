@@ -41,31 +41,31 @@ RxWebView.all(webview, client)
     .subscribe();
 ```
 
-data types:
+## data types(RxWebViewClientData)
 
-DoUpdateVisitedHistory
-OnReceivedClientCertRequest
-OnScaleChanged
-ShouldOverrideKeyEvent
-OnFormResubmission
-OnReceivedError
-OnTooManyRedirect
-ShouldOverrideUrlLoading
-OnLoadResource
-OnReceivedHttpAuthRequest
-OnUnhandledKeyEvent
-ShouldOverrideUrlLoadingWebResourceRequest
-OnPageCommitVisible
-OnReceivedHttpError
-WebResourceOnReceivedError
-OnPageFinished
-OnReceivedLoginRequest
-ShouldInterceptRequest
-OnPageStarted
-OnReceivedSslError
-ShouldInterceptWebResourceRequest
+- DoUpdateVisitedHistory : WebViewClient#doUpdateVisitedHistory
+- OnReceivedClientCertRequest : WebViewClient#onReceivedClientCertRequest
+- OnScaleChanged : WebViewClient#OnScaleChanged
+- ShouldOverrideKeyEvent : WebViewClient#shouldOverrideKeyEvent
+- OnFormResubmission : WebViewClient#onFormResubmission
+- OnReceivedError: WebViewClient#onReceivedError
+- OnTooManyRedirect: WebViewClient#onTooManyRedirect
+- ShouldOverrideUrlLoading: WebViewClient#shouldOverrideUrlLoading
+- OnLoadResource: WebViewClient#onLoadResource
+- OnReceivedHttpAuthRequest: WebViewClient#onReceivedHttpAuthRequest
+- OnUnhandledKeyEvent: WebViewClient#onUnhandledKeyEvent
+- ShouldOverrideUrlLoadingWebResourceRequest: WebViewClient#shouldOverrideUrlLoading
+- OnPageCommitVisible: WebViewClient#onPageCommitVisible
+- OnReceivedHttpError: WebViewClient#onReceivedHttpError
+- WebResourceOnReceivedError: WebViewClient#onReceivedError
+- OnPageFinished: WebViewClient#onPageFinished
+- OnReceivedLoginRequest: WebViewClient#onReceivedLoginRequest
+- ShouldInterceptRequest: WebViewClient#shouldInterceptRequest
+- OnPageStarted: WebViewClient#onPageStarted
+- OnReceivedSslError: WebViewClient#onReceivedSslError
+- ShouldInterceptWebResourceRequest: WebViewClient#shouldInterceptWebResourceRequest
 
 
 ## todo
 
-more document and samples
+- corresponds to WebChromeClient
