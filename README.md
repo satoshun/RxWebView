@@ -1,5 +1,7 @@
 # RxWebView
 
+[![](https://jitpack.io/v/satoshun/RxWebView.svg)](https://jitpack.io/#satoshun/RxWebView)
+
 this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
 
 
