@@ -13,7 +13,7 @@ import io.reactivex.Observable;
 /**
  * static factory methods for creating {@linkplain io.reactivex.Completable} and {@linkplain io.reactivex.Observable}
  */
-public class RxWebView {
+public class RxWebViewClient {
 
   /**
    * Create an completable which emits on {@code WebView} WebViewClient#onPageStarted event.
