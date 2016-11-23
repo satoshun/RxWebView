@@ -3,13 +3,18 @@ package com.github.satoshun.reactivex.webview.example;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.github.satoshun.reactivex.webview.RxWebChromeClient;
 import com.github.satoshun.reactivex.webview.RxWebViewClient;
+import com.github.satoshun.reactivex.webview.data.OnJsBeforeUnload;
 import com.github.satoshun.reactivex.webview.data.OnPageFinished;
 import com.github.satoshun.reactivex.webview.data.OnPageStarted;
+import com.github.satoshun.reactivex.webview.data.OnReceivedIcon;
+import com.github.satoshun.reactivex.webview.data.RxWebChromeClientData;
 import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptRequest;
 
@@ -23,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    sampleWebViewClient();
+    sampleWebChromeClient();
+  }
+
+  private void sampleWebViewClient() {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
 
@@ -44,5 +54,19 @@ public class MainActivity extends AppCompatActivity {
         .map(data -> (OnPageStarted) data)
         .subscribe(data -> Log.d("OnPageStarted", data.toString()));
     view.loadUrl("https://www.google.co.jp");
+  }
+
+  private void sampleWebChromeClient() {
+    WebView view = (WebView) findViewById(R.id.web3);
+    WebChromeClient client = new WebChromeClient();
+    Observable<RxWebChromeClientData> o = RxWebChromeClient.all(view, client)
+        .subscribeOn(AndroidSchedulers.mainThread()).share();
+    o.filter(data -> data instanceof OnJsBeforeUnload)
+        .map(data -> (OnJsBeforeUnload) data)
+        .subscribe(d -> Log.d("OnJsBeforeUnload", String.valueOf(d)));
+    o.filter(data -> data instanceof OnReceivedIcon)
+        .map(data -> (OnReceivedIcon) data)
+        .subscribe(d -> Log.d("OnReceivedIcon", String.valueOf(d)));
+    view.loadUrl("https://www.google.co.jp/");
   }
 }
