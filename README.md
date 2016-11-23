@@ -1,5 +1,8 @@
 # RxWebView
 
+this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
+
+
 ## install
 
 ```
@@ -8,6 +11,8 @@ compile 'com.github.satoshun:RxWebView:0.3.0'
 
 
 ## usage
+
+### WebViewClient
 
 only observes WebViewClient#onPageStarted.
 
@@ -41,31 +46,26 @@ RxWebViewClient.all(webview, client)
     .subscribe();
 ```
 
-## data types(RxWebViewClientData)
-
-- DoUpdateVisitedHistory : WebViewClient#doUpdateVisitedHistory
-- OnReceivedClientCertRequest : WebViewClient#onReceivedClientCertRequest
-- OnScaleChanged : WebViewClient#OnScaleChanged
-- ShouldOverrideKeyEvent : WebViewClient#shouldOverrideKeyEvent
-- OnFormResubmission : WebViewClient#onFormResubmission
-- OnReceivedError: WebViewClient#onReceivedError
-- OnTooManyRedirect: WebViewClient#onTooManyRedirect
-- ShouldOverrideUrlLoading: WebViewClient#shouldOverrideUrlLoading
-- OnLoadResource: WebViewClient#onLoadResource
-- OnReceivedHttpAuthRequest: WebViewClient#onReceivedHttpAuthRequest
-- OnUnhandledKeyEvent: WebViewClient#onUnhandledKeyEvent
-- ShouldOverrideUrlLoadingWebResourceRequest: WebViewClient#shouldOverrideUrlLoading
-- OnPageCommitVisible: WebViewClient#onPageCommitVisible
-- OnReceivedHttpError: WebViewClient#onReceivedHttpError
-- WebResourceOnReceivedError: WebViewClient#onReceivedError
-- OnPageFinished: WebViewClient#onPageFinished
-- OnReceivedLoginRequest: WebViewClient#onReceivedLoginRequest
-- ShouldInterceptRequest: WebViewClient#shouldInterceptRequest
-- OnPageStarted: WebViewClient#onPageStarted
-- OnReceivedSslError: WebViewClient#onReceivedSslError
-- ShouldInterceptWebResourceRequest: WebViewClient#shouldInterceptWebResourceRequest
+DATA_TYPE corresponds all WebViewClient methods. please show [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
 
 
-## todo
+### WebChromeClient
 
-- corresponds to WebChromeClient
+observes all events.
+
+```java
+WebView webview = new WebView(context);
+WebChromeClient client = new WebChromeClient(); // your custom WebChromeClient
+RxWebChromeClient.all(webview, client)
+    .subscribeOn(AndroidSchedulers.mainThread())
+    .filter(value -> value instanceof `DATA_TYPE`)
+    .map(value -> (`DATA_TYPE`) value)
+    .subscribe();
+```
+
+DATA_TYPE corresponds all WebChromeClient methods. please show [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
+
+
+## more
+
+- [sample source code](app/src/main/java/com/github/satoshun/reactivex/webview/example)
