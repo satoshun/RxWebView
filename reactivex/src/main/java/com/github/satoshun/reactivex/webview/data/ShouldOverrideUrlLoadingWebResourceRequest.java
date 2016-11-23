@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 import android.webkit.WebResourceRequest;
 
 
-public class ShouldOverrideUrlLoadingWebResourceRequest implements RxWebViewData {
+public class ShouldOverrideUrlLoadingWebResourceRequest implements RxWebViewClientData {
 
   private final WebResourceRequest resourceRequest;
 

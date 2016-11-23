@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.os.Message;
 
-public class OnTooManyRedirect implements RxWebViewData {
+public class OnTooManyRedirect implements RxWebViewClientData {
 
   private final Message cancelMsg;
   private final Message continueMsg;

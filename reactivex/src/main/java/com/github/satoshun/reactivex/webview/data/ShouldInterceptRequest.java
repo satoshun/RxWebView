@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class ShouldInterceptRequest implements RxWebViewData {
+public class ShouldInterceptRequest implements RxWebViewClientData {
 
   private final String url;
 

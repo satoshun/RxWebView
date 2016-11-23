@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.graphics.Bitmap;
 
-public class OnPageStarted implements RxWebViewData {
+public class OnPageStarted implements RxWebViewClientData {
 
   private final String url;
   private final Bitmap favicon;

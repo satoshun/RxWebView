@@ -30,7 +30,7 @@ import com.github.satoshun.reactivex.webview.data.OnReceivedSslError;
 import com.github.satoshun.reactivex.webview.data.OnScaleChanged;
 import com.github.satoshun.reactivex.webview.data.OnTooManyRedirect;
 import com.github.satoshun.reactivex.webview.data.OnUnhandledKeyEvent;
-import com.github.satoshun.reactivex.webview.data.RxWebViewData;
+import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptRequest;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptWebResourceRequest;
 import com.github.satoshun.reactivex.webview.data.ShouldOverrideUrlLoadingWebResourceRequest;
@@ -42,7 +42,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.functions.Cancellable;
 
-final class AllOnSubscribe implements ObservableOnSubscribe<RxWebViewData> {
+final class AllOnSubscribe implements ObservableOnSubscribe<RxWebViewClientData> {
 
   private final WebView webView;
   private final WebViewClient client;
@@ -52,7 +52,7 @@ final class AllOnSubscribe implements ObservableOnSubscribe<RxWebViewData> {
     this.client = client;
   }
 
-  @Override public void subscribe(final ObservableEmitter<RxWebViewData> e) throws Exception {
+  @Override public void subscribe(final ObservableEmitter<RxWebViewClientData> e) throws Exception {
     webView.setWebViewClient(new WebViewClientWrapper(client) {
       @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
         e.onNext(new ShouldOverrideUrlLoading(url));

@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 
-public class WebResourceOnReceivedError implements RxWebViewData {
+public class WebResourceOnReceivedError implements RxWebViewClientData {
 
   private final WebResourceRequest request;
   private final WebResourceError error;

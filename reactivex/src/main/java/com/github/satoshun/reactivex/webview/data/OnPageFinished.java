@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class OnPageFinished implements RxWebViewData {
+public class OnPageFinished implements RxWebViewClientData {
 
   private final String url;
 

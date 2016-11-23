@@ -2,7 +2,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.view.KeyEvent;
 
-public class OnUnhandledKeyEvent implements RxWebViewData {
+public class OnUnhandledKeyEvent implements RxWebViewClientData {
 
   private final KeyEvent event;
 

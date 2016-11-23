@@ -2,7 +2,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.webkit.HttpAuthHandler;
 
-public class OnReceivedHttpAuthRequest implements RxWebViewData {
+public class OnReceivedHttpAuthRequest implements RxWebViewClientData {
 
   private final HttpAuthHandler handler;
   private final String host;

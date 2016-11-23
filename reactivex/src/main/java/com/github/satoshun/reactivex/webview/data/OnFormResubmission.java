@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.os.Message;
 
-public class OnFormResubmission implements RxWebViewData {
+public class OnFormResubmission implements RxWebViewClientData {
 
   private final Message dontResend;
   private final Message resend;

@@ -2,7 +2,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.webkit.ClientCertRequest;
 
-public class OnReceivedClientCertRequest implements RxWebViewData {
+public class OnReceivedClientCertRequest implements RxWebViewClientData {
 
   private final ClientCertRequest request;
 

@@ -6,7 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.webkit.WebViewClient;
 
 import com.github.satoshun.reactivex.webview.data.OnPageStarted;
-import com.github.satoshun.reactivex.webview.data.RxWebViewData;
+import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -92,9 +92,9 @@ public class RxWebViewTest {
 
   @Test public void all() throws Exception {
     WebViewClient client = new WebViewClient();
-    TestObserver<RxWebViewData> o = RxWebView.all(activity.webview, client)
-        .filter(new Predicate<RxWebViewData>() {
-          @Override public boolean test(RxWebViewData data) throws Exception {
+    TestObserver<RxWebViewClientData> o = RxWebView.all(activity.webview, client)
+        .filter(new Predicate<RxWebViewClientData>() {
+          @Override public boolean test(RxWebViewClientData data) throws Exception {
             return data instanceof OnPageStarted;
           }
         })

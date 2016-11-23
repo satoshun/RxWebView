@@ -1,7 +1,7 @@
 package com.github.satoshun.reactivex.webview.data;
 
 
-public class DoUpdateVisitedHistory implements RxWebViewData {
+public class DoUpdateVisitedHistory implements RxWebViewClientData {
 
   private final String url;
   private final boolean isReload;

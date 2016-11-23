@@ -1,7 +1,7 @@
 package com.github.satoshun.reactivex.webview.data;
 
 
-public class OnLoadResource implements RxWebViewData {
+public class OnLoadResource implements RxWebViewClientData {
 
   private final String url;
 

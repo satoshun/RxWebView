@@ -4,7 +4,7 @@ package com.github.satoshun.reactivex.webview.data;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 
-public class OnReceivedHttpError implements RxWebViewData {
+public class OnReceivedHttpError implements RxWebViewClientData {
 
   private final WebResourceRequest request;
   private final WebResourceResponse errorResponse;

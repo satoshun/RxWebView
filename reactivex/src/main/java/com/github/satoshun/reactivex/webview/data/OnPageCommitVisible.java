@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class OnPageCommitVisible implements RxWebViewData {
+public class OnPageCommitVisible implements RxWebViewClientData {
 
   private final String url;
 

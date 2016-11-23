@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class OnReceivedError implements RxWebViewData {
+public class OnReceivedError implements RxWebViewClientData {
 
   private final int errorCode;
   private final String description;

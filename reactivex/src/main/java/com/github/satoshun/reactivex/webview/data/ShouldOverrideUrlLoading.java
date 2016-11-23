@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class ShouldOverrideUrlLoading implements RxWebViewData {
+public class ShouldOverrideUrlLoading implements RxWebViewClientData {
 
   private final String url;
 

@@ -2,7 +2,7 @@ package com.github.satoshun.reactivex.webview.data;
 
 import android.view.KeyEvent;
 
-public class ShouldOverrideKeyEvent implements RxWebViewData {
+public class ShouldOverrideKeyEvent implements RxWebViewClientData {
 
   private final KeyEvent event;
 

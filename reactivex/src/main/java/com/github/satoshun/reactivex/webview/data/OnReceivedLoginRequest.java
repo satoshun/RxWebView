@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class OnReceivedLoginRequest implements RxWebViewData {
+public class OnReceivedLoginRequest implements RxWebViewClientData {
 
   private final String realm;
   private final String account;

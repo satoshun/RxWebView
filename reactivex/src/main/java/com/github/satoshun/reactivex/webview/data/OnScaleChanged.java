@@ -1,6 +1,6 @@
 package com.github.satoshun.reactivex.webview.data;
 
-public class OnScaleChanged implements RxWebViewData {
+public class OnScaleChanged implements RxWebViewClientData {
 
   private final float oldScale;
   private final float newScale;

@@ -3,7 +3,7 @@ package com.github.satoshun.reactivex.webview.data;
 import android.net.http.SslError;
 import android.webkit.SslErrorHandler;
 
-public class OnReceivedSslError implements RxWebViewData {
+public class OnReceivedSslError implements RxWebViewClientData {
 
   private final SslErrorHandler handler;
   private final SslError error;
