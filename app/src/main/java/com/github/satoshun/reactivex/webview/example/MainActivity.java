@@ -7,10 +7,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.github.satoshun.reactivex.webview.RxWebView;
+import com.github.satoshun.reactivex.webview.RxWebViewClient;
 import com.github.satoshun.reactivex.webview.data.OnPageFinished;
 import com.github.satoshun.reactivex.webview.data.OnPageStarted;
-import com.github.satoshun.reactivex.webview.data.RxWebViewData;
+import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptRequest;
 
 import io.reactivex.Observable;
@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
 
-    RxWebView.onPageFinished(view, client)
+    RxWebViewClient.onPageFinished(view, client)
         .subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(() -> Toast.makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG).show());
     view.loadUrl("https://www.google.co.jp");
 
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();
-    Observable<RxWebViewData> o = RxWebView.all(view, client).share();
+    Observable<RxWebViewClientData> o = RxWebViewClient.all(view, client).share();
     o.filter(data -> data instanceof ShouldInterceptRequest)
         .map(data -> (ShouldInterceptRequest) data)
         .subscribe(data -> Log.d("ShouldInterceptRequest", data.toString()));
