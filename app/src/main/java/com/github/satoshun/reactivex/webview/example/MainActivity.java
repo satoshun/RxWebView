@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
     client = new WebViewClient();
     Observable<RxWebViewClientData> o = RxWebViewClient.all(view, client).share();
     o.filter(data -> data instanceof ShouldInterceptRequest)
-        .map(data -> (ShouldInterceptRequest) data)
+        .cast(ShouldInterceptRequest.class)
         .subscribe(data -> Log.d("ShouldInterceptRequest", data.toString()));
     o.filter(data -> data instanceof OnPageFinished)
-        .map(data -> (OnPageFinished) data)
+        .cast(OnPageFinished.class)
         .subscribe(data -> Log.d("OnPageFinished", data.toString()));
     o.filter(data -> data instanceof OnPageStarted)
-        .map(data -> (OnPageStarted) data)
+        .cast(OnPageStarted.class)
         .subscribe(data -> Log.d("OnPageStarted", data.toString()));
     view.loadUrl("https://www.google.co.jp");
   }
@@ -62,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
     Observable<RxWebChromeClientData> o = RxWebChromeClient.all(view, client)
         .subscribeOn(AndroidSchedulers.mainThread()).share();
     o.filter(data -> data instanceof OnJsBeforeUnload)
-        .map(data -> (OnJsBeforeUnload) data)
+        .cast(OnJsBeforeUnload.class)
         .subscribe(d -> Log.d("OnJsBeforeUnload", String.valueOf(d)));
     o.filter(data -> data instanceof OnReceivedIcon)
-        .map(data -> (OnReceivedIcon) data)
+        .cast(OnReceivedIcon.class)
         .subscribe(d -> Log.d("OnReceivedIcon", String.valueOf(d)));
     view.loadUrl("https://www.google.co.jp/");
   }
