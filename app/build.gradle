@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.0"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     applicationId "com.github.satoshun.reactivex.webview.example"
-    minSdkVersion 15
-    targetSdkVersion 25
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.compileSdkVersion
     versionCode 1
     versionName "1.0"
 
@@ -31,5 +31,5 @@ dependencies {
   debugCompile project(':reactivex')
   releaseCompile 'com.github.satoshun:RxWebView:1.0.0'
 
-  compile 'com.android.support:appcompat-v7:25.0.1'
+  compile 'com.android.support:appcompat-v7:25.1.0'
 }
