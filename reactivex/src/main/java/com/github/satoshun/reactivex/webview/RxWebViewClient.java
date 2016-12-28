@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
+import com.github.satoshun.reactivex.webview.internal.ObjectHelper;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -24,6 +25,8 @@ public class RxWebViewClient {
    */
   @CheckResult @NonNull
   public static Completable onPageStarted(WebView webView, WebViewClient client) {
+    ObjectHelper.requireNonNull(webView, "webView is null");
+    ObjectHelper.requireNonNull(client, "client is null");
     return Completable.create(new PageStartedOnSubscribe(webView, client));
   }
 
@@ -36,6 +39,8 @@ public class RxWebViewClient {
    */
   @CheckResult @NonNull
   public static Completable onPageFinished(WebView webView, WebViewClient client) {
+    ObjectHelper.requireNonNull(webView, "webView is null");
+    ObjectHelper.requireNonNull(client, "client is null");
     return Completable.create(new PageFinishedOnSubscribe(webView, client));
   }
 
@@ -46,6 +51,8 @@ public class RxWebViewClient {
    */
   @CheckResult @NonNull
   public static Observable<RxWebViewClientData> all(WebView webView, WebViewClient client) {
+    ObjectHelper.requireNonNull(webView, "webView is null");
+    ObjectHelper.requireNonNull(client, "client is null");
     return Observable.create(new AllOnSubscribe(webView, client));
   }
 }
