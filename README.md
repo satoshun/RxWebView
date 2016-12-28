@@ -43,8 +43,7 @@ WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
 RxWebViewClient.all(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
-    .filter(value -> value instanceof `DATA_TYPE`)
-    .cast(`DATA_TYPE`.class)
+    .ofType(`DATA_TYPE`.class) // ex. OnPageFinished.class
     .subscribe();
 ```
 
@@ -60,8 +59,7 @@ WebView webview = new WebView(context);
 WebChromeClient client = new WebChromeClient(); // your custom WebChromeClient
 RxWebChromeClient.all(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
-    .filter(value -> value instanceof `DATA_TYPE`)
-    .cast(`DATA_TYPE`.class)
+    .ofType(`DATA_TYPE`.class) // ex. OnPageFinished.class
     .subscribe();
 ```
 

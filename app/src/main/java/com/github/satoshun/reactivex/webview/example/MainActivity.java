@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
 
+    // subscribe only onPageFinished event
     RxWebViewClient.onPageFinished(view, client)
         .subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(() -> Toast.makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG).show());
@@ -44,15 +45,18 @@ public class MainActivity extends AppCompatActivity {
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();
     Observable<RxWebViewClientData> o = RxWebViewClient.all(view, client).share();
-    o.filter(data -> data instanceof ShouldInterceptRequest)
-        .cast(ShouldInterceptRequest.class)
+    // subscribe ShouldInterceptRequest event
+    o.ofType(ShouldInterceptRequest.class)
         .subscribe(data -> Log.d("ShouldInterceptRequest", data.toString()));
-    o.filter(data -> data instanceof OnPageFinished)
-        .cast(OnPageFinished.class)
+    // subscribe OnPageFinished event
+    o.ofType(OnPageFinished.class)
         .subscribe(data -> Log.d("OnPageFinished", data.toString()));
-    o.filter(data -> data instanceof OnPageStarted)
-        .cast(OnPageStarted.class)
+    // subscribe OnPageStarted event
+    o.ofType(OnPageStarted.class)
         .subscribe(data -> Log.d("OnPageStarted", data.toString()));
+    // subscribe all events of WebViewClient
+    o.subscribe(d -> Log.d("RxWebViewClient", String.valueOf(d)));
+
     view.loadUrl("https://www.google.co.jp");
   }
 
@@ -61,12 +65,15 @@ public class MainActivity extends AppCompatActivity {
     WebChromeClient client = new WebChromeClient();
     Observable<RxWebChromeClientData> o = RxWebChromeClient.all(view, client)
         .subscribeOn(AndroidSchedulers.mainThread()).share();
-    o.filter(data -> data instanceof OnJsBeforeUnload)
-        .cast(OnJsBeforeUnload.class)
+    // subscribe OnJsBeforeUnload event
+    o.ofType(OnJsBeforeUnload.class)
         .subscribe(d -> Log.d("OnJsBeforeUnload", String.valueOf(d)));
-    o.filter(data -> data instanceof OnReceivedIcon)
-        .cast(OnReceivedIcon.class)
+    // subscribe OnReceivedIcon event
+    o.ofType(OnReceivedIcon.class)
         .subscribe(d -> Log.d("OnReceivedIcon", String.valueOf(d)));
+    // subscribe all events of WebChromeClient
+    o.subscribe(d -> Log.d("RxWebChromeClient", String.valueOf(d)));
+
     view.loadUrl("https://www.google.co.jp/");
   }
 }
