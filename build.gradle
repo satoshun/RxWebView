@@ -22,10 +22,10 @@ task clean(type: Delete) {
 
 ext {
   compileSdkVersion = 25
-  buildToolsVersion = '25.0.0'
+  buildToolsVersion = '25.0.2'
   minSdkVersion = 14
 
-  supportAnnotation = 'com.android.support:support-annotations:25.0.1'
+  supportAnnotation = 'com.android.support:support-annotations:25.1.0'
   rxjava2 = 'io.reactivex.rxjava2:rxjava:2.0.3'
   rxandroid2 = 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }
