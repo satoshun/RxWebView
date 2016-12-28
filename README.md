@@ -44,11 +44,11 @@ WebViewClient client = new WebViewClient();
 RxWebViewClient.all(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
     .filter(value -> value instanceof `DATA_TYPE`)
-    .map(value -> (`DATA_TYPE`) value)
+    .cast(`DATA_TYPE`.class)
     .subscribe();
 ```
 
-DATA_TYPE corresponds all WebViewClient methods. please show [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
+DATA_TYPE corresponds to all WebViewClient methods. please view [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
 
 
 ### WebChromeClient
@@ -61,11 +61,11 @@ WebChromeClient client = new WebChromeClient(); // your custom WebChromeClient
 RxWebChromeClient.all(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
     .filter(value -> value instanceof `DATA_TYPE`)
-    .map(value -> (`DATA_TYPE`) value)
+    .cast(`DATA_TYPE`.class)
     .subscribe();
 ```
 
-DATA_TYPE corresponds all WebChromeClient methods. please show [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
+DATA_TYPE corresponds to all WebChromeClient methods. please view [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
 
 
 ## more
