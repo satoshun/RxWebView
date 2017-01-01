@@ -14,8 +14,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.concurrent.TimeUnit;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -61,7 +59,7 @@ public class RxWebChromeClientTest {
         })
         .take(1)
         .test();
-    o.await(1, TimeUnit.SECONDS);
+    o.await();
     o.assertValueCount(1);
   }
 }
