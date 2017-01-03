@@ -137,6 +137,7 @@ class WebChromeClientWrapper extends WebChromeClient {
     actual.getVisitedHistory(callback);
   }
 
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   @Override
   public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
     return actual.onShowFileChooser(webView, filePathCallback, fileChooserParams);

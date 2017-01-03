@@ -33,9 +33,9 @@ import com.github.satoshun.reactivex.webview.data.OnUnhandledKeyEvent;
 import com.github.satoshun.reactivex.webview.data.RxWebViewClientData;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptRequest;
 import com.github.satoshun.reactivex.webview.data.ShouldInterceptWebResourceRequest;
-import com.github.satoshun.reactivex.webview.data.ShouldOverrideUrlLoadingWebResourceRequest;
 import com.github.satoshun.reactivex.webview.data.ShouldOverrideKeyEvent;
 import com.github.satoshun.reactivex.webview.data.ShouldOverrideUrlLoading;
+import com.github.satoshun.reactivex.webview.data.ShouldOverrideUrlLoadingWebResourceRequest;
 import com.github.satoshun.reactivex.webview.data.WebResourceOnReceivedError;
 
 import io.reactivex.ObservableEmitter;
