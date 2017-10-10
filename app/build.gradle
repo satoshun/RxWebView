@@ -7,13 +7,9 @@ android {
   defaultConfig {
     applicationId "com.github.satoshun.reactivex.webview.example"
     minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.compileSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 1
     versionName "1.0"
-
-    jackOptions {
-      enabled true
-    }
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -31,5 +27,5 @@ dependencies {
   debugCompile project(':reactivex')
   releaseCompile 'com.github.satoshun:RxWebView:1.0.0'
 
-  compile 'com.android.support:appcompat-v7:25.1.0'
+  compile 'com.android.support:appcompat-v7:26.1.0'
 }
