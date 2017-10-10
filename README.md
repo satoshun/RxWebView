@@ -1,6 +1,6 @@
 # RxWebView
 
-[![](https://jitpack.io/v/satoshun/RxWebView.svg)](https://jitpack.io/#satoshun/RxWebView) [![Build Status](https://travis-ci.org/satoshun/RxWebView.svg?branch=master)](https://travis-ci.org/satoshun/RxWebView) [![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView) 
+[![](https://jitpack.io/v/satoshun/RxWebView.svg)](https://jitpack.io/#satoshun/RxWebView) [![CircleCI](https://circleci.com/gh/satoshun/RxWebView.svg?style=svg)](https://circleci.com/gh/satoshun/RxWebView) [![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView)
 
 this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
 
