@@ -8,6 +8,10 @@ this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It 
 ## install
 
 ```
+repositories {
+  maven { url "https://jitpack.io" }
+}
+
 compile 'com.github.satoshun:RxWebView:1.0.0'
 ```
 
