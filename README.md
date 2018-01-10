@@ -63,7 +63,7 @@ RxWebChromeClient.all(webview, client)
     .subscribe();
 ```
 
-DATA_TYPE corresponds to all WebChromeClient methods. please view [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
+DATA_TYPE corresponds to all WebChromeClient methods. more info into [it](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
 
 
 ## more
