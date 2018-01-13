@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-  debugCompile project(':reactivex')
+  debugCompile project(':rxwebview')
   releaseCompile 'com.github.satoshun:RxWebView:1.0.0'
 
   compile 'com.android.support:appcompat-v7:26.1.0'
