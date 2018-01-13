@@ -20,6 +20,8 @@ android {
 }
 
 dependencies {
+  api project(':rxwebview')
+
   implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.10'
 
   implementation rootProject.ext.rxjava2
