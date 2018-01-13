@@ -1,2 +1,2 @@
-include ':reactivex'
+include ':rxwebview'
 include ':app'
