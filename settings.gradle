@@ -1,2 +1,3 @@
 include ':rxwebview'
+include ':rxwebview-kotlin'
 include ':app'
