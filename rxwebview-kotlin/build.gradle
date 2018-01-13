@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'jacoco'
 
@@ -10,24 +11,26 @@ android {
     minSdkVersion rootProject.ext.minSdkVersion
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
+
   buildTypes {
     debug {
       testCoverageEnabled true
     }
   }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
-  }
 }
 
 dependencies {
+  api project(':rxwebview')
+
+  implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.10'
+
   implementation rootProject.ext.rxjava2
   implementation rootProject.ext.rxandroid2
 
   implementation rootProject.ext.supportAnnotation
 
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
+  testImplementation 'junit:junit:4.12'
+
+  androidTestImplementation 'com.android.support.test:runner:1.0.1'
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
