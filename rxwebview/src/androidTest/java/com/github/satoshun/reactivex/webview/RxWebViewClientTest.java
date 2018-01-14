@@ -88,7 +88,7 @@ public class RxWebViewClientTest {
     assertThat(observer.isDisposed(), is(true));
   }
 
-  @Test public void all() throws Exception {
+  @Test public void events() throws Exception {
     WebViewClient client = new WebViewClient();
     TestObserver<RxWebViewClientData> o = RxWebViewClient.all(activity.webview, client)
         .filter(new Predicate<RxWebViewClientData>() {

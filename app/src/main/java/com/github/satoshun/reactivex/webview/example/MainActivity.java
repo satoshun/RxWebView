@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();
-    Observable<RxWebViewClientData> o = RxWebViewClient.all(view, client).share();
+    Observable<RxWebViewClientData> o = RxWebViewClient.events(view, client).share();
     // subscribe ShouldInterceptRequest event
     o.ofType(ShouldInterceptRequest.class)
         .subscribe(data -> Log.d("ShouldInterceptRequest", data.toString()));
