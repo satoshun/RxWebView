@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
   private fun sampleWebChromeClient() {
     val view = findViewById<View>(R.id.web3) as WebView
     val client = WebChromeClient()
-    val o = RxWebChromeClient.all(view, client)
+    val o = RxWebChromeClient.events(view, client)
         .subscribeOn(AndroidSchedulers.mainThread()).share()
     // subscribe OnJsBeforeUnload event
     o.ofType(OnJsBeforeUnload::class.java)
