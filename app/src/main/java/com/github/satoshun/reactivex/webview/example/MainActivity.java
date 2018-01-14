@@ -6,6 +6,7 @@ import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.github.satoshun.reactivex.webview.RxWebChromeClient;
 import com.github.satoshun.reactivex.webview.RxWebViewClient;
@@ -34,6 +35,26 @@ public class MainActivity extends AppCompatActivity {
   private void sampleWebViewClient() {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
+
+    // subscribe OnPageStarted and OnPageFinished event
+    RxWebViewClient.events(view, client)
+        .publish((shared) -> Observable.merge(
+            shared.ofType(OnPageStarted.class),
+            shared.ofType(OnPageFinished.class)
+        ))
+        .subscribe((event) -> {
+          if (event instanceof OnPageStarted) {
+            Toast
+                .makeText(MainActivity.this, "onPageStarted", Toast.LENGTH_LONG)
+                .show();
+          }
+          if (event instanceof OnPageFinished) {
+            Toast
+                .makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG)
+                .show();
+          }
+        });
+    view.loadUrl("https://www.google.co.jp");
 
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();

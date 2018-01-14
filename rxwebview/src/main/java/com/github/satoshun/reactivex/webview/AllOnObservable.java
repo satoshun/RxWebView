@@ -53,6 +53,8 @@ final class AllOnObservable extends Observable<RxWebViewClientData> {
   }
 
   @Override protected void subscribeActual(final Observer<? super RxWebViewClientData> observer) {
+    MainThreadDisposable.verifyMainThread();
+
     webView.setWebViewClient(new ClientWrapper(original, observer));
     observer.onSubscribe(new MainThreadDisposable() {
       @Override protected void onDispose() {
