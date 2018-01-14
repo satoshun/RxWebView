@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.github.satoshun.reactivex.webview.example.MainActivity">
+    tools:context="com.github.satoshun.reactivex.webkit.example.MainActivity">
 
     <WebView
         android:id="@+id/web1"

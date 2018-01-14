@@ -1,0 +1,14 @@
+package com.github.satoshun.reactivex.webkit.data;
+
+public class ShouldOverrideUrlLoading implements RxWebViewClientData {
+
+  private final String url;
+
+  public ShouldOverrideUrlLoading(String url) {
+    this.url = url;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+}
