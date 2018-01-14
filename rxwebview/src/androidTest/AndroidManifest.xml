@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.satoshun.reactivex.webview.test">
+    package="com.github.satoshun.reactivex.webkit.test">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name="com.github.satoshun.reactivex.webview.RxWebViewTestActivity" />
+        <activity android:name="com.github.satoshun.reactivex.webkit.RxWebViewTestActivity" />
     </application>
 </manifest>
