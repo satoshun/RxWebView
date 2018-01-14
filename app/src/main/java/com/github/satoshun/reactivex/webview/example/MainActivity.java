@@ -6,7 +6,6 @@ import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import com.github.satoshun.reactivex.webview.RxWebChromeClient;
 import com.github.satoshun.reactivex.webview.RxWebViewClient;
@@ -35,12 +34,6 @@ public class MainActivity extends AppCompatActivity {
   private void sampleWebViewClient() {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
-
-    // subscribe only onPageFinished event
-    RxWebViewClient.onPageFinished(view, client)
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .subscribe(() -> Toast.makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG).show());
-    view.loadUrl("https://www.google.co.jp");
 
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();
