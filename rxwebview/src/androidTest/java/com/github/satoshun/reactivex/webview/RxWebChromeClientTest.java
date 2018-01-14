@@ -38,7 +38,7 @@ public class RxWebChromeClientTest {
   @Test public void all() throws Exception {
     WebChromeClient client = new WebChromeClient();
 
-    TestObserver<Integer> o = RxWebChromeClient.all(activity.webview, client)
+    TestObserver<Integer> o = RxWebChromeClient.events(activity.webview, client)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
             activity.webview.loadUrl("https://www.google.com/");
