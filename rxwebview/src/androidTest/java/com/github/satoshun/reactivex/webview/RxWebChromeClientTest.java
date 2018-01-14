@@ -34,8 +34,7 @@ public class RxWebChromeClientTest {
     activity = activityRule.getActivity();
   }
 
-
-  @Test public void all() throws Exception {
+  @Test public void events() throws Exception {
     WebChromeClient client = new WebChromeClient();
 
     TestObserver<Integer> o = RxWebChromeClient.events(activity.webview, client)
