@@ -29,7 +29,7 @@ public class RxWebViewClient {
 
   /**
    * Create an observable which emits on {@code WebView} WebViewClient event.
-   * Some data types are defined into {@link com.github.satoshun.reactivex.webview.data}.
+   * data types are defined into {@link com.github.satoshun.reactivex.webview.data}.
    * It's corresponding to WebViewClient event.
    */
   @CheckResult @NonNull
