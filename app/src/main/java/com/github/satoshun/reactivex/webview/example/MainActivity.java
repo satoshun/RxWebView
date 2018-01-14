@@ -36,15 +36,29 @@ public class MainActivity extends AppCompatActivity {
     WebView view = (WebView) findViewById(R.id.web1);
     WebViewClient client = new WebViewClient();
 
-    // subscribe only onPageFinished event
-    RxWebViewClient.onPageFinished(view, client)
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .subscribe(() -> Toast.makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG).show());
+    // subscribe OnPageStarted and OnPageFinished event
+    RxWebViewClient.events(view, client)
+        .publish((shared) -> Observable.merge(
+            shared.ofType(OnPageStarted.class),
+            shared.ofType(OnPageFinished.class)
+        ))
+        .subscribe((event) -> {
+          if (event instanceof OnPageStarted) {
+            Toast
+                .makeText(MainActivity.this, "onPageStarted", Toast.LENGTH_LONG)
+                .show();
+          }
+          if (event instanceof OnPageFinished) {
+            Toast
+                .makeText(MainActivity.this, "onPageFinished", Toast.LENGTH_LONG)
+                .show();
+          }
+        });
     view.loadUrl("https://www.google.co.jp");
 
     view = (WebView) findViewById(R.id.web2);
     client = new WebViewClient();
-    Observable<RxWebViewClientData> o = RxWebViewClient.all(view, client).share();
+    Observable<RxWebViewClientData> o = RxWebViewClient.events(view, client).share();
     // subscribe ShouldInterceptRequest event
     o.ofType(ShouldInterceptRequest.class)
         .subscribe(data -> Log.d("ShouldInterceptRequest", data.toString()));

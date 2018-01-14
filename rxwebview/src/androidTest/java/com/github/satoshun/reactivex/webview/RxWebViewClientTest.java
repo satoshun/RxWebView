@@ -35,62 +35,9 @@ public class RxWebViewClientTest {
     activity = activityRule.getActivity();
   }
 
-  @Test public void onPageFinished() throws Exception {
+  @Test public void events() throws Exception {
     WebViewClient client = new WebViewClient();
-    TestObserver<Void> observer = RxWebViewClient.onPageFinished(activity.webview, client)
-        .doOnSubscribe(new Consumer<Disposable>() {
-          @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com/");
-          }
-        })
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .test();
-    observer.await();
-    observer.assertComplete();
-  }
-
-  @Test public void onPageFinished_dispose() throws Exception {
-    WebViewClient client = new WebViewClient();
-    TestObserver<Void> observer = RxWebViewClient.onPageFinished(activity.webview, client)
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .test();
-    assertThat(observer.isDisposed(), is(false));
-    observer.dispose();
-    assertThat(observer.isDisposed(), is(true));
-  }
-
-  @Test public void onPageStarted() throws Exception {
-    WebViewClient client = new WebViewClient();
-    TestObserver<Void> observer = RxWebViewClient.onPageStarted(activity.webview, client)
-        .doOnSubscribe(new Consumer<Disposable>() {
-          @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com/");
-          }
-        })
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .test();
-    observer.await();
-    observer.assertComplete();
-  }
-
-  @Test public void onPageStarted_dispose() throws Exception {
-    WebViewClient client = new WebViewClient();
-    TestObserver<Void> observer = RxWebViewClient.onPageStarted(activity.webview, client)
-        .doOnSubscribe(new Consumer<Disposable>() {
-          @Override public void accept(Disposable disposable) throws Exception {
-            activity.webview.loadUrl("https://www.google.com/");
-          }
-        })
-        .subscribeOn(AndroidSchedulers.mainThread())
-        .test();
-    assertThat(observer.isDisposed(), is(false));
-    observer.dispose();
-    assertThat(observer.isDisposed(), is(true));
-  }
-
-  @Test public void all() throws Exception {
-    WebViewClient client = new WebViewClient();
-    TestObserver<RxWebViewClientData> o = RxWebViewClient.all(activity.webview, client)
+    TestObserver<RxWebViewClientData> o = RxWebViewClient.events(activity.webview, client)
         .filter(new Predicate<RxWebViewClientData>() {
           @Override public boolean test(RxWebViewClientData data) throws Exception {
             return data instanceof OnPageStarted;

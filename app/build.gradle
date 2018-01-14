@@ -25,7 +25,8 @@ android {
 
 dependencies {
   debugCompile project(':rxwebview')
-  releaseCompile 'com.github.satoshun:RxWebView:1.0.0'
+  releaseCompile project(':rxwebview')
+//  releaseCompile 'com.github.satoshun:RxWebView:1.0.0'
 
   implementation rootProject.ext.rxjava2
   implementation rootProject.ext.rxandroid2

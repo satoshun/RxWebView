@@ -30,26 +30,28 @@ RxWebViewClient.onPageStarted(webview, client)
     .subscribe();
 ```
 
-and only observes WebViewClient#onPageFinished.
+observes all events.
 
 ```java
 WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
-RxWebViewClient.onPageFinished(webview, client)
+RxWebViewClient.events(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
+    .ofType(ANY_DATA_TYPE.class)
     .subscribe();
 ```
 
-and observes all events.
-
+ex, you want a `onPageFinished` event.
+  
 ```java
 WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
-RxWebViewClient.all(webview, client)
+RxWebViewClient.events(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
-    .ofType(`DATA_TYPE`.class) // ex. OnPageFinished.class
+    .ofType(OnPageFinished.class)
     .subscribe();
 ```
+
 
 DATA_TYPE corresponds to all WebViewClient methods. please view [package](reactivex/src/main/java/com/github/satoshun/reactivex/webview/data)
 
@@ -63,7 +65,7 @@ WebView webview = new WebView(context);
 WebChromeClient client = new WebChromeClient(); // your custom WebChromeClient
 RxWebChromeClient.all(webview, client)
     .subscribeOn(AndroidSchedulers.mainThread())
-    .ofType(`DATA_TYPE`.class) // ex. OnPageFinished.class
+    .ofType(DATA_TYPE.class)
     .subscribe();
 ```
 
