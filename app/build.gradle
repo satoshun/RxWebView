@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     applicationId "com.github.satoshun.reactivex.webkit.example"
@@ -28,12 +27,9 @@ android {
 }
 
 dependencies {
-  debugImplementation project(':rxwebview')
-  releaseImplementation project(':rxwebview')
-//  releaseImplementation 'com.github.satoshun:RxWebView:1.0.0'
-
   debugImplementation project(':rxwebview-kotlin')
   releaseImplementation project(':rxwebview-kotlin')
+//  releaseImplementation 'com.github.satoshun:RxWebView:1.0.0'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
