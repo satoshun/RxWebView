@@ -45,29 +45,27 @@ import io.reactivex.android.MainThreadDisposable;
 final class AllOnObservable extends Observable<RxWebViewClientData> {
 
   private final WebView webView;
-  private final WebViewClient original;
 
-  AllOnObservable(WebView webView, WebViewClient original) {
+  AllOnObservable(WebView webView) {
     this.webView = webView;
-    this.original = original;
   }
 
   @Override protected void subscribeActual(final Observer<? super RxWebViewClientData> observer) {
     MainThreadDisposable.verifyMainThread();
 
-    webView.setWebViewClient(new ClientWrapper(original, observer));
+    webView.setWebViewClient(new ClientWrapper(observer));
     observer.onSubscribe(new MainThreadDisposable() {
       @Override protected void onDispose() {
-        webView.setWebViewClient(original);
+        webView.setWebViewClient(null);
       }
     });
   }
 
-  static class ClientWrapper extends WebViewClientWrapper {
+  static class ClientWrapper extends WebViewClient {
     private final Observer<? super RxWebViewClientData> observer;
 
-    ClientWrapper(WebViewClient actual, Observer<? super RxWebViewClientData> observer) {
-      super(actual);
+    ClientWrapper(Observer<? super RxWebViewClientData> observer) {
+      super();
       this.observer = observer;
     }
 

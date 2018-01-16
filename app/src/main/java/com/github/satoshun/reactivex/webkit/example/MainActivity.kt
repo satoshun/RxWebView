@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import com.github.satoshun.reactivex.webkit.RxWebChromeClient
 import com.github.satoshun.reactivex.webkit.data.*
@@ -31,10 +30,9 @@ class MainActivity : AppCompatActivity() {
 
   private fun startAndFinishedEvents() {
     val view = findViewById<WebView>(R.id.web1)
-    val client = WebViewClient()
 
     // subscribe OnPageStarted and OnPageFinished event
-    view.events(client)
+    view.events()
         .publish { shared ->
           Observable.merge(
               shared.ofType(OnPageStarted::class.java),
@@ -58,8 +56,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun otherEvents() {
     val view = findViewById<WebView>(R.id.web2)
-    val client = WebViewClient()
-    val o = view.events(client).share()
+    val o = view.events().share()
     // subscribe ShouldInterceptRequest event
     o.ofType(ShouldInterceptRequest::class.java)
         .subscribe { data -> Log.d("ShouldInterceptRequest", data.toString()) }

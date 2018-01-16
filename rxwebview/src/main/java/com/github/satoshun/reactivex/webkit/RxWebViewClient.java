@@ -24,10 +24,8 @@ public class RxWebViewClient {
    * It's corresponding to WebViewClient event.
    */
   @CheckResult @NonNull @Deprecated
-  public static Observable<RxWebViewClientData> all(
-      @NonNull WebView webView, @Nullable WebViewClient client
-  ) {
-    return events(webView, client);
+  public static Observable<RxWebViewClientData> all(@NonNull WebView webView) {
+    return events(webView);
   }
 
   /**
@@ -38,19 +36,6 @@ public class RxWebViewClient {
   @CheckResult @NonNull
   public static Observable<RxWebViewClientData> events(@NonNull WebView webView) {
     ObjectHelper.requireNonNull(webView, "webView is null");
-    return events(webView, null);
-  }
-
-  /**
-   * Create an observable which emits on {@code WebView} WebViewClient event.
-   * data types are defined into {@link com.github.satoshun.reactivex.webkit.data}.
-   * It's corresponding to WebViewClient event.
-   */
-  @CheckResult @NonNull
-  public static Observable<RxWebViewClientData> events(
-      @NonNull WebView webView, @Nullable WebViewClient client
-  ) {
-    ObjectHelper.requireNonNull(webView, "webView is null");
-    return new AllOnObservable(webView, client);
+    return new AllOnObservable(webView);
   }
 }
