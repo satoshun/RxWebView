@@ -10,9 +10,6 @@ android {
     minSdkVersion rootProject.ext.minSdkVersion
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
-  dexOptions {
-    preDexLibraries = false
-  }
   buildTypes {
     debug {
       testCoverageEnabled true
