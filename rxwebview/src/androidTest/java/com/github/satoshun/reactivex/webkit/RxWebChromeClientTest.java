@@ -4,7 +4,6 @@ package com.github.satoshun.reactivex.webkit;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.webkit.WebChromeClient;
 
 import com.github.satoshun.reactivex.webkit.data.OnProgressChanged;
 import com.github.satoshun.reactivex.webkit.data.RxWebChromeClientData;
@@ -35,9 +34,7 @@ public class RxWebChromeClientTest {
   }
 
   @Test public void events() throws Exception {
-    WebChromeClient client = new WebChromeClient();
-
-    TestObserver<Integer> o = RxWebChromeClient.events(activity.webview, client)
+    TestObserver<Integer> o = RxWebChromeClient.events(activity.webview)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
             activity.webview.loadUrl("https://www.google.com/");

@@ -5,14 +5,10 @@ apply plugin: 'jacoco'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     minSdkVersion rootProject.ext.minSdkVersion
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-  dexOptions {
-    preDexLibraries = false
   }
   buildTypes {
     debug {
@@ -24,7 +20,7 @@ android {
 dependencies {
   api project(':rxwebview')
 
-  implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.10'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
   implementation rootProject.ext.rxjava2
   implementation rootProject.ext.rxandroid2

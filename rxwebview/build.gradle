@@ -4,14 +4,10 @@ apply plugin: 'jacoco'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     minSdkVersion rootProject.ext.minSdkVersion
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-  dexOptions {
-    preDexLibraries = false
   }
   buildTypes {
     debug {
