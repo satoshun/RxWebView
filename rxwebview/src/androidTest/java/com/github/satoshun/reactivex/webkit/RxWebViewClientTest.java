@@ -3,7 +3,6 @@ package com.github.satoshun.reactivex.webkit;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.webkit.WebViewClient;
 
 import com.github.satoshun.reactivex.webkit.data.OnPageStarted;
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData;
@@ -36,8 +35,7 @@ public class RxWebViewClientTest {
   }
 
   @Test public void events() throws Exception {
-    WebViewClient client = new WebViewClient();
-    TestObserver<RxWebViewClientData> o = RxWebViewClient.events(activity.webview, client)
+    TestObserver<RxWebViewClientData> o = RxWebViewClient.events(activity.webview)
         .filter(new Predicate<RxWebViewClientData>() {
           @Override public boolean test(RxWebViewClientData data) throws Exception {
             return data instanceof OnPageStarted;

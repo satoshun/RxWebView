@@ -52,27 +52,25 @@ import io.reactivex.android.MainThreadDisposable;
 final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
 
   private final WebView webView;
-  private final WebChromeClient original;
 
-  AllChromeOnObservable(WebView webView, WebChromeClient original) {
+  AllChromeOnObservable(WebView webView) {
     this.webView = webView;
-    this.original = original;
   }
 
   @Override protected void subscribeActual(Observer<? super RxWebChromeClientData> observer) {
-    webView.setWebChromeClient(new ClientWrapper(original, observer));
+    webView.setWebChromeClient(new ClientWrapper(observer));
     observer.onSubscribe(new MainThreadDisposable() {
       @Override protected void onDispose() {
-        webView.setWebChromeClient(original);
+        webView.setWebChromeClient(null);
       }
     });
   }
 
-  static class ClientWrapper extends WebChromeClientWrapper {
+  static class ClientWrapper extends WebChromeClient {
     private final Observer<? super RxWebChromeClientData> observer;
 
-    ClientWrapper(WebChromeClient actual, Observer<? super RxWebChromeClientData> observer) {
-      super(actual);
+    ClientWrapper(Observer<? super RxWebChromeClientData> observer) {
+      super();
       this.observer = observer;
     }
 

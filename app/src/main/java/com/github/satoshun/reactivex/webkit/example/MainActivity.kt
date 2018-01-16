@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.Toast
-import com.github.satoshun.reactivex.webkit.RxWebChromeClient
+import com.github.satoshun.reactivex.webkit.chromeEvents
 import com.github.satoshun.reactivex.webkit.data.*
 import com.github.satoshun.reactivex.webkit.events
 import io.reactivex.Observable
@@ -74,8 +73,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun sampleWebChromeClient() {
     val view = findViewById<View>(R.id.web3) as WebView
-    val client = WebChromeClient()
-    val o = RxWebChromeClient.events(view, client)
+    val o = view.chromeEvents()
         .subscribeOn(AndroidSchedulers.mainThread()).share()
     // subscribe OnJsBeforeUnload event
     o.ofType(OnJsBeforeUnload::class.java)
