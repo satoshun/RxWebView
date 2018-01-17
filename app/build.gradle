@@ -26,7 +26,8 @@ android {
 dependencies {
   debugImplementation project(':rxwebview-kotlin')
   releaseImplementation project(':rxwebview-kotlin')
-//  releaseImplementation 'com.github.satoshun:RxWebView:1.0.0'
+//  implementation 'com.github.satoshun.RxWebView:rxwebview:2.0.0'
+//  implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.0.0'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 

@@ -12,7 +12,10 @@ repositories {
   maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.satoshun:RxWebView:1.0.0'
+implementation 'com.github.satoshun.RxWebView:rxwebview:2.0.0'
+
+// with kotlin
+implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.0.0'
 ```
 
 
@@ -63,4 +66,4 @@ other types defines into [package](reactivex/src/main/java/com/github/satoshun/r
 
 ## more
 
-- [sample source code](app/src/main/java/com/github/satoshun/reactivex/webview/example)
+- [sample source code](app/src/main/java/com/github/satoshun/reactivex/webkit/example)
