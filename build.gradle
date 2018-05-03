@@ -1,12 +1,12 @@
 buildscript {
-  ext.kotlinVersion = '1.2.20'
+  ext.kotlinVersion = '1.2.41'
 
   repositories {
     google()
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.1'
+    classpath 'com.android.tools.build:gradle:3.1.2'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
     classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
   }
@@ -25,11 +25,11 @@ task clean(type: Delete) {
 }
 
 ext {
-  compileSdkVersion = 26
-  targetSdkVersion = 26
+  compileSdkVersion = 27
+  targetSdkVersion = 27
   minSdkVersion = 14
 
-  supportAnnotation = 'com.android.support:support-annotations:26.1.0'
+  supportAnnotation = 'com.android.support:support-annotations:27.1.1'
   rxjava2 = 'io.reactivex.rxjava2:rxjava:2.1.8'
   rxandroid2 = 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }
