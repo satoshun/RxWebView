@@ -2,6 +2,7 @@
 
 package com.github.satoshun.reactivex.webkit
 
+import android.support.annotation.CheckResult
 import android.webkit.WebView
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData
 import io.reactivex.Observable
@@ -11,4 +12,5 @@ import io.reactivex.Observable
  * data types are defined into [com.github.satoshun.reactivex.webkit.data].
  * It's corresponding to [android.webkit.WebViewClient] event.
  */
+@CheckResult
 inline fun WebView.events(): Observable<RxWebViewClientData> = RxWebViewClient.events(this)
