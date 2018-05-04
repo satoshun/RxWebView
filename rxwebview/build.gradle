@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'jacoco'
 
 android {
@@ -21,12 +20,13 @@ android {
 }
 
 dependencies {
-  implementation rootProject.ext.rxjava2
+  api rootProject.ext.rxjava2
   implementation rootProject.ext.rxandroid2
-
   implementation rootProject.ext.supportAnnotation
 
   androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
