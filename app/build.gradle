@@ -1,13 +1,20 @@
+buildscript {
+  dependencies {
+    classpath Libs.android_plugin
+    classpath Libs.kotlin_plugin
+  }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
+  compileSdkVersion Vers.compile_sdk
 
   defaultConfig {
     applicationId "com.github.satoshun.reactivex.webkit.example"
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
+    minSdkVersion Vers.min_sdk
+    targetSdkVersion Vers.target_sdk
     versionCode 1
     versionName "1.0"
   }
@@ -22,13 +29,11 @@ android {
 dependencies {
   debugImplementation project(':rxwebview-kotlin')
   releaseImplementation project(':rxwebview-kotlin')
-//  implementation 'com.github.satoshun.RxWebView:rxwebview:2.0.0'
-//  implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.0.0'
+//  implementation "com.github.satoshun.RxWebView:rxwebview:2.1.0"
+//  implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.0"
 
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-
-  implementation rootProject.ext.rxjava2
-  implementation rootProject.ext.rxandroid2
-
-  implementation 'com.android.support:appcompat-v7:27.1.1'
+  implementation Libs.kotlin
+  implementation Libs.rx_java
+  implementation Libs.rx_android
+  implementation Libs.appcompat_v7
 }

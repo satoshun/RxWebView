@@ -1,11 +1,17 @@
+buildscript {
+  dependencies {
+    classpath Libs.android_plugin
+  }
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
+  compileSdkVersion Vers.compile_sdk
 
   defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
+    minSdkVersion Vers.min_sdk
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -23,11 +29,11 @@ android {
 }
 
 dependencies {
-  api rootProject.ext.rxjava2
-  implementation rootProject.ext.rxandroid2
-  implementation rootProject.ext.supportAnnotation
+  api Libs.rx_java
+  implementation Libs.rx_android
+  implementation Libs.support_annotations
 
-  androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+  androidTestImplementation(Libs.espresso, {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 }
