@@ -1,10 +1,12 @@
 buildscript {
   dependencies {
     classpath Libs.android_plugin
+    classpath Libs.dokka_plugin
   }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'jacoco'
 
 android {
@@ -38,4 +40,4 @@ dependencies {
   })
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+apply from: rootProject.file('gradle/gradle-mvn-push-kotlin.gradle')
