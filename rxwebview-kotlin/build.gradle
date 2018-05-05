@@ -1,11 +1,20 @@
+buildscript {
+  dependencies {
+    classpath Libs.android_plugin
+    classpath Libs.kotlin_plugin
+    classpath Libs.dokka_plugin
+  }
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.dokka-android'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
+  compileSdkVersion Vers.compile_sdk
 
   defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
+    minSdkVersion Vers.min_sdk
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   compileOptions {
@@ -19,14 +28,14 @@ android {
 
 dependencies {
   api project(':rxwebview')
-  api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  api Libs.kotlin
 
-  implementation rootProject.ext.supportAnnotation
+  implementation Libs.support_annotations
 
-  testImplementation 'junit:junit:4.12'
+  testImplementation Libs.junit
 
-  androidTestImplementation 'com.android.support.test:runner:1.0.1'
-  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+  androidTestImplementation Libs.support_test
+  androidTestImplementation Libs.espresso
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+apply from: rootProject.file('gradle/gradle-mvn-push-kotlin.gradle')

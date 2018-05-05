@@ -1,33 +1,20 @@
-buildscript {
-  ext.kotlinVersion = '1.2.41'
+subprojects {
+  buildscript {
+    repositories {
+      jcenter()
+      google()
+    }
+  }
 
   repositories {
-    google()
     jcenter()
+    google()
   }
-  dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.2'
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-  }
-}
 
-allprojects {
-  repositories {
-    google()
-    jcenter()
-  }
+  group = GROUP
+  version = VERSION_NAME
 }
 
 task clean(type: Delete) {
   delete rootProject.buildDir
-}
-
-ext {
-  compileSdkVersion = 27
-  targetSdkVersion = 27
-  minSdkVersion = 14
-
-  supportAnnotation = 'com.android.support:support-annotations:27.1.1'
-  rxjava2 = 'io.reactivex.rxjava2:rxjava:2.1.8'
-  rxandroid2 = 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }

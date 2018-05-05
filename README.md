@@ -1,21 +1,19 @@
 # RxWebView
 
-[![](https://jitpack.io/v/satoshun/RxWebView.svg)](https://jitpack.io/#satoshun/RxWebView) [![CircleCI](https://circleci.com/gh/satoshun/RxWebView.svg?style=svg)](https://circleci.com/gh/satoshun/RxWebView) [![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView)
+[![CircleCI](https://circleci.com/gh/satoshun/RxWebView.svg?style=svg)](https://circleci.com/gh/satoshun/RxWebView) [![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView)
 
-this project inspires [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
+RxJava2 binding APIs for Android WebView.
+
+This project inspires by [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
 
 
 ## install
 
-```
-repositories {
-  maven { url "https://jitpack.io" }
-}
+```groovy
+implementation 'com.github.satoshun.RxWebView:rxwebview:2.1.0'
 
-implementation 'com.github.satoshun.RxWebView:rxwebview:2.0.0'
-
-// with kotlin
-implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.0.0'
+// use kotlin
+implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.0'
 ```
 
 
@@ -35,7 +33,7 @@ RxWebViewClient.events(webview, client)
 ```
 
 For example, you want a `onPageFinished` event.
-  
+
 ```java
 WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
