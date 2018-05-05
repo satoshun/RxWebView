@@ -10,10 +10,10 @@ This project inspires by [RxBinding](https://github.com/JakeWharton/RxBinding). 
 ## install
 
 ```groovy
-implementation 'com.github.satoshun.RxWebView:rxwebview:2.1.1'
+implementation 'com.github.satoshun.RxWebView:rxwebview:2.1.2'
 
 // use kotlin
-implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.1'
+implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.2'
 ```
 
 
