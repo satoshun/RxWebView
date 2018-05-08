@@ -1,6 +1,8 @@
-# RxWebView
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.satoshun.RxWebView/rxwebview/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.satoshun.RxWebView/rxwebview)
+[![CircleCI](https://circleci.com/gh/satoshun/RxWebView.svg?style=svg)](https://circleci.com/gh/satoshun/RxWebView)
+[![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView)
 
-[![CircleCI](https://circleci.com/gh/satoshun/RxWebView.svg?style=svg)](https://circleci.com/gh/satoshun/RxWebView) [![codecov](https://codecov.io/gh/satoshun/RxWebView/branch/master/graph/badge.svg)](https://codecov.io/gh/satoshun/RxWebView)
+# RxWebView
 
 RxJava2 binding APIs for Android WebView.
 
