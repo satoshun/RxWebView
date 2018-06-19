@@ -6,64 +6,58 @@
 
 RxJava2 binding APIs for Android WebView.
 
-This project inspires by [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
-
-
 ## install
 
 ```groovy
-implementation 'com.github.satoshun.RxWebView:rxwebview:2.1.2'
+implementation "com.github.satoshun.RxWebView:rxwebview:${latest-version}"
 
-// use kotlin
-implementation 'com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.2'
+// for Kotlin user
+implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:${latest-version}"
 ```
-
 
 ## usage
 
 ### WebViewClient
 
-observes all events.
+When you want a all [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient) events, we can use a `RxWebViewClient#events`.
 
 ```java
 WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
 RxWebViewClient.events(webview, client)
-    .subscribeOn(AndroidSchedulers.mainThread())
     .ofType(ANY_DATA_TYPE.class)
     .subscribe();
 ```
 
-For example, you want a `onPageFinished` event.
+When you want a `onPageFinished` event, we can use a `RxWebViewClient#events` + `ofType` operator.
 
 ```java
 WebView webview = new WebView(context);
 WebViewClient client = new WebViewClient();
 RxWebViewClient.events(webview, client)
-    .subscribeOn(AndroidSchedulers.mainThread())
     .ofType(OnPageFinished.class)
     .subscribe();
 ```
 
-
-other types defines into [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data)
+All data type defined to [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data).
 
 
 ### WebChromeClient
 
-observes all events.
+When you want a all [WebChromeClient](https://developer.android.com/reference/android/webkit/WebChromeClient) events.
 
 ```java
 WebView webview = new WebView(context);
 RxWebChromeClient.events(webview)
-    .subscribeOn(AndroidSchedulers.mainThread())
-    .ofType(DATA_TYPE.class)
     .subscribe();
 ```
 
-other types defines into [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data)
+All data type defined to [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data)s
 
-
-## more
+## more information
 
 - [sample source code](app/src/main/java/com/github/satoshun/reactivex/webkit/example)
+
+## etc
+
+This project inspired by [RxBinding](https://github.com/JakeWharton/RxBinding). It was very helpful. thx!
