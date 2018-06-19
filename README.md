@@ -23,8 +23,7 @@ When you want a all [WebViewClient](https://developer.android.com/reference/andr
 
 ```java
 WebView webview = new WebView(context);
-WebViewClient client = new WebViewClient();
-RxWebViewClient.events(webview, client)
+RxWebViewClient.events(webview)
     .ofType(ANY_DATA_TYPE.class)
     .subscribe();
 ```
@@ -33,8 +32,7 @@ When you want a `onPageFinished` event, we can use a `RxWebViewClient#events` + 
 
 ```java
 WebView webview = new WebView(context);
-WebViewClient client = new WebViewClient();
-RxWebViewClient.events(webview, client)
+RxWebViewClient.events(webview)
     .ofType(OnPageFinished.class)
     .subscribe();
 ```
