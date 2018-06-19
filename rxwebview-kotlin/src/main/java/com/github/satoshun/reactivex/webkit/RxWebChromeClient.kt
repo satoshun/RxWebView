@@ -7,5 +7,8 @@ import android.webkit.WebView
 import com.github.satoshun.reactivex.webkit.data.RxWebChromeClientData
 import io.reactivex.Observable
 
+/**
+ * Create an observable of WebView from WebChromeClient.
+ */
 @CheckResult
 inline fun WebView.chromeEvents(): Observable<RxWebChromeClientData> = RxWebChromeClient.events(this)

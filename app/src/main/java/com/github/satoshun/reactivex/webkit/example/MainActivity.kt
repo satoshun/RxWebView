@@ -7,10 +7,13 @@ import android.view.View
 import android.webkit.WebView
 import android.widget.Toast
 import com.github.satoshun.reactivex.webkit.chromeEvents
-import com.github.satoshun.reactivex.webkit.data.*
+import com.github.satoshun.reactivex.webkit.data.OnJsBeforeUnload
+import com.github.satoshun.reactivex.webkit.data.OnPageFinished
+import com.github.satoshun.reactivex.webkit.data.OnPageStarted
+import com.github.satoshun.reactivex.webkit.data.OnReceivedIcon
+import com.github.satoshun.reactivex.webkit.data.ShouldInterceptRequest
 import com.github.satoshun.reactivex.webkit.events
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,11 +26,11 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun sampleWebViewClient() {
-    startAndFinishedEvents()
+    detectStartAndFinishEvent()
     otherEvents()
   }
 
-  private fun startAndFinishedEvents() {
+  private fun detectStartAndFinishEvent() {
     val view = findViewById<WebView>(R.id.web1)
 
     // subscribe OnPageStarted and OnPageFinished event
@@ -39,14 +42,12 @@ class MainActivity : AppCompatActivity() {
           )
         }
         .subscribe { event ->
-          if (event is OnPageStarted) {
-            Toast
-                .makeText(this@MainActivity, "onPageStarted", Toast.LENGTH_LONG)
+          when (event) {
+            is OnPageStarted -> Toast
+                .makeText(this, "onPageStarted", Toast.LENGTH_LONG)
                 .show()
-          }
-          if (event is OnPageFinished) {
-            Toast
-                .makeText(this@MainActivity, "onPageFinished", Toast.LENGTH_LONG)
+            is OnPageFinished -> Toast
+                .makeText(this, "onPageFinished", Toast.LENGTH_LONG)
                 .show()
           }
         }
@@ -73,8 +74,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun sampleWebChromeClient() {
     val view = findViewById<View>(R.id.web3) as WebView
-    val o = view.chromeEvents()
-        .subscribeOn(AndroidSchedulers.mainThread()).share()
+    val o = view.chromeEvents().share()
     // subscribe OnJsBeforeUnload event
     o.ofType(OnJsBeforeUnload::class.java)
         .subscribe { d -> Log.d("OnJsBeforeUnload", d.toString()) }
