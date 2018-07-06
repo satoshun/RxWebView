@@ -4,6 +4,7 @@ package com.github.satoshun.reactivex.webkit
 
 import android.support.annotation.CheckResult
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData
 import io.reactivex.Observable
 
@@ -13,4 +14,4 @@ import io.reactivex.Observable
  * It's corresponding to [android.webkit.WebViewClient] event.
  */
 @CheckResult
-inline fun WebView.events(): Observable<RxWebViewClientData> = RxWebViewClient.events(this)
+inline fun WebView.events(delegate: WebViewClient? = null): Observable<RxWebViewClientData> = RxWebViewClient.events(this, delegate)

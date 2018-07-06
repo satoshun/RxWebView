@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Toast
 import com.github.satoshun.reactivex.webkit.chromeEvents
 import com.github.satoshun.reactivex.webkit.data.OnJsBeforeUnload
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     val view = findViewById<WebView>(R.id.web1)
 
     // subscribe OnPageStarted and OnPageFinished event
-    view.events()
+    view.events(delegate = WebViewClient())
         .publish { shared ->
           Observable.merge(
               shared.ofType(OnPageStarted::class.java),
