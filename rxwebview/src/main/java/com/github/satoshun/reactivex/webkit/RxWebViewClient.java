@@ -2,7 +2,9 @@ package com.github.satoshun.reactivex.webkit;
 
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData;
 import com.github.satoshun.reactivex.webkit.internal.ObjectHelper;
 import io.reactivex.Observable;
@@ -31,7 +33,17 @@ public class RxWebViewClient {
    */
   @CheckResult @NonNull
   public static Observable<RxWebViewClientData> events(@NonNull WebView webView) {
+    return events(webView, null);
+  }
+
+  /**
+   * Create an observable which emits on {@code WebView} WebViewClient event.
+   * data types are defined into {@link com.github.satoshun.reactivex.webkit.data}.
+   * It's corresponding to WebViewClient event.
+   */
+  @CheckResult @NonNull
+  public static Observable<RxWebViewClientData> events(@NonNull WebView webView, @Nullable WebViewClient delegate) {
     ObjectHelper.requireNonNull(webView, "webView is null");
-    return new AllOnObservable(webView);
+    return new AllOnObservable(webView, delegate);
   }
 }
