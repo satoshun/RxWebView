@@ -28,7 +28,7 @@ android {
 
 dependencies {
   implementation project(':rxwebview-kotlin')
-//  implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:2.1.2"
+//  implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:2.2.0"
 
   implementation Libs.kotlin
   implementation Libs.rx_java
