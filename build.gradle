@@ -3,6 +3,7 @@ subprojects {
     repositories {
       jcenter()
       google()
+      gradlePluginPortal()
     }
   }
 
