@@ -15,8 +15,8 @@ object Libs {
   val ktlint_plugin = "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:4.1.0"
 
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Vers.kotlin}"
-  val rx_java = "io.reactivex.rxjava2:rxjava:2.1.14"
-  val rx_android = "io.reactivex.rxjava2:rxandroid:2.0.1"
+  val rx_java = "io.reactivex.rxjava2:rxjava:2.1.17"
+  val rx_android = "io.reactivex.rxjava2:rxandroid:2.0.2"
 
   val appcompat_v7 = "com.android.support:appcompat-v7:${Vers.support_lib}"
   val support_annotations = "com.android.support:support-annotations:${Vers.support_lib}"

@@ -19,7 +19,7 @@ implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:${latest-version}
 
 ### WebViewClient
 
-When you want a all [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient) events, we can use a `RxWebViewClient#events`.
+If you want a all events from [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient), we can use a `RxWebViewClient#events`.
 
 ```java
 WebView webview = new WebView(context);
@@ -28,21 +28,27 @@ RxWebViewClient.events(webview)
     .subscribe();
 ```
 
-When you want a `onPageFinished` event, we can use a `RxWebViewClient#events` + `ofType` operator.
+If you want a specific event like a `onPageFinished`, we can use a `RxWebViewClient#events` + `ofType` operator.
 
 ```java
 WebView webview = new WebView(context);
 RxWebViewClient.events(webview)
-    .ofType(OnPageFinished.class)
+    .ofType(OnPageFinished.class) // only OnPageFinished
     .subscribe();
 ```
 
-All data type defined to [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data).
+If you want to a hook events from WebViewClient, we can give a custom WebViewClient.
 
+```java
+RxWebViewClient.events(webview, new CustomWebViewClient())
+    .subscribe();
+```
+
+All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data).
 
 ### WebChromeClient
 
-When you want a all [WebChromeClient](https://developer.android.com/reference/android/webkit/WebChromeClient) events.
+If you want a all events from [WebChromeClient](https://developer.android.com/reference/android/webkit/WebChromeClient).
 
 ```java
 WebView webview = new WebView(context);
@@ -50,7 +56,7 @@ RxWebChromeClient.events(webview)
     .subscribe();
 ```
 
-All data type defined to [package](reactivex/src/main/java/com/github/satoshun/reactivex/webkit/data)s
+All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data)
 
 ## more information
 
