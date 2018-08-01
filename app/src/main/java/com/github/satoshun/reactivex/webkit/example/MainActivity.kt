@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun sampleWebChromeClient() {
     val view = findViewById<View>(R.id.web3) as WebView
-    val o = view.chromeEvents().share()
+    val o = view.chromeEvents(delegate = WebChromeClient()).share()
     // subscribe OnJsBeforeUnload event
     o.ofType(OnJsBeforeUnload::class.java)
         .subscribe { d -> Log.d("OnJsBeforeUnload", d.toString()) }
