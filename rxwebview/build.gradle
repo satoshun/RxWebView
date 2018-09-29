@@ -16,7 +16,7 @@ android {
 
   defaultConfig {
     minSdkVersion Vers.min_sdk
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
     debug {
@@ -35,8 +35,10 @@ android {
 dependencies {
   api Libs.rx_java
   implementation Libs.rx_android
-  implementation Libs.support_annotations
+  implementation Libs.android_annotation
 
+  androidTestImplementation Libs.test_rule
+  androidTestImplementation Libs.test_runner
   androidTestImplementation(Libs.espresso, {
     exclude group: 'com.android.support', module: 'support-annotations'
   })

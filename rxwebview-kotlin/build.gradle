@@ -19,7 +19,6 @@ android {
 
   defaultConfig {
     minSdkVersion Vers.min_sdk
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_7
@@ -34,10 +33,5 @@ dependencies {
   api project(':rxwebview')
   api Libs.kotlin
 
-  implementation Libs.support_annotations
-
-  testImplementation Libs.junit
-
-  androidTestImplementation Libs.support_test
-  androidTestImplementation Libs.espresso
+  implementation Libs.android_annotation
 }
