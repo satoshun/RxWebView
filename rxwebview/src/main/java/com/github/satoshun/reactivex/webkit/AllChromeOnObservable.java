@@ -4,46 +4,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
-import android.webkit.ConsoleMessage;
-import android.webkit.GeolocationPermissions;
-import android.webkit.JsPromptResult;
-import android.webkit.JsResult;
-import android.webkit.PermissionRequest;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebStorage;
-import android.webkit.WebView;
-import com.github.satoshun.reactivex.webkit.data.GetDefaultVideoPoster;
-import com.github.satoshun.reactivex.webkit.data.GetVideoLoadingProgressView;
-import com.github.satoshun.reactivex.webkit.data.GetVisitedHistory;
-import com.github.satoshun.reactivex.webkit.data.OnCloseWindow;
-import com.github.satoshun.reactivex.webkit.data.OnConsoleMessage;
-import com.github.satoshun.reactivex.webkit.data.OnConsoleMessageNew;
-import com.github.satoshun.reactivex.webkit.data.OnCreateWindow;
-import com.github.satoshun.reactivex.webkit.data.OnExceededDatabaseQuota;
-import com.github.satoshun.reactivex.webkit.data.OnGeolocationPermissionsHidePrompt;
-import com.github.satoshun.reactivex.webkit.data.OnGeolocationPermissionsShowPrompt;
-import com.github.satoshun.reactivex.webkit.data.OnHideCustomView;
-import com.github.satoshun.reactivex.webkit.data.OnJsAlert;
-import com.github.satoshun.reactivex.webkit.data.OnJsBeforeUnload;
-import com.github.satoshun.reactivex.webkit.data.OnJsConfirm;
-import com.github.satoshun.reactivex.webkit.data.OnJsPrompt;
-import com.github.satoshun.reactivex.webkit.data.OnJsTimeout;
-import com.github.satoshun.reactivex.webkit.data.OnPermissionRequest;
-import com.github.satoshun.reactivex.webkit.data.OnPermissionRequestCanceled;
-import com.github.satoshun.reactivex.webkit.data.OnProgressChanged;
-import com.github.satoshun.reactivex.webkit.data.OnReachedMaxAppCacheSize;
-import com.github.satoshun.reactivex.webkit.data.OnReceivedIcon;
-import com.github.satoshun.reactivex.webkit.data.OnReceivedTitle;
-import com.github.satoshun.reactivex.webkit.data.OnReceivedTouchIconUrl;
-import com.github.satoshun.reactivex.webkit.data.OnRequestFocus;
-import com.github.satoshun.reactivex.webkit.data.OnShowCustomView;
-import com.github.satoshun.reactivex.webkit.data.OnShowCustomViewRequestedOrientation;
-import com.github.satoshun.reactivex.webkit.data.OnShowFileChooser;
-import com.github.satoshun.reactivex.webkit.data.RxWebChromeClientData;
+import android.webkit.*;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import com.github.satoshun.reactivex.webkit.data.*;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.MainThreadDisposable;
@@ -58,10 +23,12 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
     this.delegate = delegate;
   }
 
-  @Override protected void subscribeActual(Observer<? super RxWebChromeClientData> observer) {
+  @Override
+  protected void subscribeActual(Observer<? super RxWebChromeClientData> observer) {
     webView.setWebChromeClient(new ClientWrapper(observer, delegate));
     observer.onSubscribe(new MainThreadDisposable() {
-      @Override protected void onDispose() {
+      @Override
+      protected void onDispose() {
         webView.setWebChromeClient(null);
       }
     });
@@ -69,7 +36,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
 
   static class ClientWrapper extends WebChromeClient {
     private final Observer<? super RxWebChromeClientData> observer;
-    @Nullable private final WebChromeClient delegate;
+    @Nullable
+    private final WebChromeClient delegate;
 
     ClientWrapper(Observer<? super RxWebChromeClientData> observer, @Nullable WebChromeClient delegate) {
       super();
@@ -77,7 +45,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       this.delegate = delegate;
     }
 
-    @Override public void onProgressChanged(WebView view, int newProgress) {
+    @Override
+    public void onProgressChanged(WebView view, int newProgress) {
       if (delegate != null) {
         delegate.onProgressChanged(view, newProgress);
       } else {
@@ -86,7 +55,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnProgressChanged(newProgress));
     }
 
-    @Override public void onReceivedTitle(WebView view, String title) {
+    @Override
+    public void onReceivedTitle(WebView view, String title) {
       if (delegate != null) {
         delegate.onReceivedTitle(view, title);
       } else {
@@ -95,7 +65,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnReceivedTitle(title));
     }
 
-    @Override public void onReceivedIcon(WebView view, Bitmap icon) {
+    @Override
+    public void onReceivedIcon(WebView view, Bitmap icon) {
       if (delegate != null) {
         delegate.onReceivedIcon(view, icon);
       } else {
@@ -104,7 +75,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnReceivedIcon(icon));
     }
 
-    @Override public void onReceivedTouchIconUrl(WebView view, String url, boolean precomposed) {
+    @Override
+    public void onReceivedTouchIconUrl(WebView view, String url, boolean precomposed) {
       if (delegate != null) {
         delegate.onReceivedTouchIconUrl(view, url, precomposed);
       } else {
@@ -113,7 +85,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnReceivedTouchIconUrl(url, precomposed));
     }
 
-    @Override public void onShowCustomView(View view, CustomViewCallback callback) {
+    @Override
+    public void onShowCustomView(View view, CustomViewCallback callback) {
       if (delegate != null) {
         delegate.onShowCustomView(view, callback);
       } else {
@@ -132,7 +105,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnShowCustomViewRequestedOrientation(requestedOrientation, callback));
     }
 
-    @Override public void onHideCustomView() {
+    @Override
+    public void onHideCustomView() {
       if (delegate != null) {
         delegate.onHideCustomView();
       } else {
@@ -151,7 +125,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       }
     }
 
-    @Override public void onRequestFocus(WebView view) {
+    @Override
+    public void onRequestFocus(WebView view) {
       if (delegate != null) {
         delegate.onRequestFocus(view);
       } else {
@@ -160,7 +135,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnRequestFocus());
     }
 
-    @Override public void onCloseWindow(WebView window) {
+    @Override
+    public void onCloseWindow(WebView window) {
       if (delegate != null) {
         delegate.onCloseWindow(window);
       } else {
@@ -239,7 +215,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnGeolocationPermissionsShowPrompt(origin, callback));
     }
 
-    @Override public void onGeolocationPermissionsHidePrompt() {
+    @Override
+    public void onGeolocationPermissionsHidePrompt() {
       if (delegate != null) {
         delegate.onGeolocationPermissionsHidePrompt();
       } else {
@@ -249,7 +226,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override public void onPermissionRequest(PermissionRequest request) {
+    @Override
+    public void onPermissionRequest(PermissionRequest request) {
       if (delegate != null) {
         delegate.onPermissionRequest(request);
       } else {
@@ -259,7 +237,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override public void onPermissionRequestCanceled(PermissionRequest request) {
+    @Override
+    public void onPermissionRequestCanceled(PermissionRequest request) {
       if (delegate != null) {
         delegate.onPermissionRequestCanceled(request);
       } else {
@@ -268,7 +247,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnPermissionRequestCanceled(request));
     }
 
-    @Override public boolean onJsTimeout() {
+    @Override
+    public boolean onJsTimeout() {
       observer.onNext(new OnJsTimeout());
       if (delegate != null) {
         return delegate.onJsTimeout();
@@ -277,7 +257,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       }
     }
 
-    @Override public void onConsoleMessage(String message, int lineNumber, String sourceID) {
+    @Override
+    public void onConsoleMessage(String message, int lineNumber, String sourceID) {
       if (delegate != null) {
         delegate.onConsoleMessage(message, lineNumber, sourceID);
       } else {
@@ -286,7 +267,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       observer.onNext(new OnConsoleMessage(message, lineNumber, sourceID));
     }
 
-    @Override public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+    @Override
+    public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
       observer.onNext(new OnConsoleMessageNew(consoleMessage));
       if (delegate != null) {
         return delegate.onConsoleMessage(consoleMessage);
@@ -295,7 +277,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       }
     }
 
-    @Override public Bitmap getDefaultVideoPoster() {
+    @Override
+    public Bitmap getDefaultVideoPoster() {
       observer.onNext(new GetDefaultVideoPoster());
       if (delegate != null) {
         return delegate.getDefaultVideoPoster();
@@ -304,7 +287,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       }
     }
 
-    @Override public View getVideoLoadingProgressView() {
+    @Override
+    public View getVideoLoadingProgressView() {
       observer.onNext(new GetVideoLoadingProgressView());
       if (delegate != null) {
         return delegate.getVideoLoadingProgressView();
@@ -313,7 +297,8 @@ final class AllChromeOnObservable extends Observable<RxWebChromeClientData> {
       }
     }
 
-    @Override public void getVisitedHistory(ValueCallback<String[]> callback) {
+    @Override
+    public void getVisitedHistory(ValueCallback<String[]> callback) {
       if (delegate != null) {
         delegate.getVisitedHistory(callback);
       } else {

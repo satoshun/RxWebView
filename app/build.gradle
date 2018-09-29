@@ -33,5 +33,5 @@ dependencies {
   implementation Libs.kotlin
   implementation Libs.rx_java
   implementation Libs.rx_android
-  implementation Libs.appcompat_v7
+  implementation Libs.appcompat
 }

@@ -2,9 +2,9 @@
 
 package com.github.satoshun.reactivex.webkit
 
-import android.support.annotation.CheckResult
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.annotation.CheckResult
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData
 import io.reactivex.Observable
 
