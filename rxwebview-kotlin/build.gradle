@@ -4,6 +4,7 @@ buildscript {
     classpath Libs.kotlin_plugin
     classpath Libs.dokka_plugin
     classpath Libs.ktlint_plugin
+    classpath Libs.publish_plugin
   }
 }
 
@@ -11,6 +12,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jlleitschuh.gradle.ktlint'
 apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
   compileSdkVersion Vers.compile_sdk
@@ -39,5 +41,3 @@ dependencies {
   androidTestImplementation Libs.support_test
   androidTestImplementation Libs.espresso
 }
-
-apply from: rootProject.file('gradle/gradle-mvn-push-kotlin.gradle')
