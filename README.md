@@ -40,7 +40,7 @@ If you want to a hook events from `WebViewClient`, we can give a custom WebViewC
 webview.events(delegate = CustomWebViewClient()).subscribe()
 ```
 
-All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data).
+All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data/RxWebViewClientData.kt).
 
 ### WebChromeClient
 
@@ -57,7 +57,7 @@ If you want to a hook events from `WebChromeClient`, we can give a custom WebChr
 webview.chromeEvents(delegate = customWebChromeClient).subscribe()
 ```
 
-All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data)
+All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data/RxWebChromeClientData.kt)
 
 ## more information
 
