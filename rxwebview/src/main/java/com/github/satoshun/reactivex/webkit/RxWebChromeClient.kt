@@ -44,7 +44,6 @@ import com.github.satoshun.reactivex.webkit.data.OnShowCustomView
 import com.github.satoshun.reactivex.webkit.data.OnShowCustomViewRequestedOrientation
 import com.github.satoshun.reactivex.webkit.data.OnShowFileChooser
 import com.github.satoshun.reactivex.webkit.data.RxWebChromeClientData
-import com.github.satoshun.reactivex.webkit.internal.ObjectHelper
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.MainThreadDisposable
@@ -58,7 +57,6 @@ object RxWebChromeClient {
    */
   @CheckResult
   @JvmOverloads fun events(webView: WebView, delegate: WebChromeClient? = null): Observable<RxWebChromeClientData> {
-    ObjectHelper.requireNonNull(webView, "webView is null")
     return AllChromeOnObservable(webView, delegate)
   }
 }

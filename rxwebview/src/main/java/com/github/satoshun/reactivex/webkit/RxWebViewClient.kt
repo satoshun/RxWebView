@@ -37,7 +37,6 @@ import com.github.satoshun.reactivex.webkit.data.ShouldOverrideKeyEvent
 import com.github.satoshun.reactivex.webkit.data.ShouldOverrideUrlLoading
 import com.github.satoshun.reactivex.webkit.data.ShouldOverrideUrlLoadingWebResourceRequest
 import com.github.satoshun.reactivex.webkit.data.WebResourceOnReceivedError
-import com.github.satoshun.reactivex.webkit.internal.ObjectHelper
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.MainThreadDisposable
@@ -53,7 +52,6 @@ object RxWebViewClient {
    */
   @CheckResult
   @JvmOverloads fun events(webView: WebView, delegate: WebViewClient? = null): Observable<RxWebViewClientData> {
-    ObjectHelper.requireNonNull(webView, "webView is null")
     return AllOnObservable(webView, delegate)
   }
 }
