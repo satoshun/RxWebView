@@ -7,7 +7,7 @@ object Vers {
 }
 
 object Libs {
-  val android_plugin = "com.android.tools.build:gradle:3.2.0"
+  val android_plugin = "com.android.tools.build:gradle:3.2.1"
   val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
   val dokka_plugin = "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
   val ktlint_plugin = "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:4.1.0"
