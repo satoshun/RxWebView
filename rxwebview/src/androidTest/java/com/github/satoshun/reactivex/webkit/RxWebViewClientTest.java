@@ -22,25 +22,30 @@ import static org.junit.Assert.assertThat;
 @RunWith(AndroidJUnit4.class)
 public class RxWebViewClientTest {
 
-  @Rule public final ActivityTestRule<RxWebViewTestActivity> activityRule =
+  @Rule
+  public final ActivityTestRule<RxWebViewTestActivity> activityRule =
       new ActivityTestRule<>(RxWebViewTestActivity.class);
 
   private RxWebViewTestActivity activity;
 
-  @Before public void setUp() {
+  @Before
+  public void setUp() {
     activity = activityRule.getActivity();
   }
 
-  @Test public void events() throws Exception {
-    TestObserver<RxWebViewClientData> o = RxWebViewClient.events(activity.webview)
+  @Test
+  public void events() throws Exception {
+    TestObserver<RxWebViewClientData> o = RxWebViewClient.INSTANCE.events(activity.webview)
         .filter(new Predicate<RxWebViewClientData>() {
-          @Override public boolean test(RxWebViewClientData data) throws Exception {
+          @Override
+          public boolean test(RxWebViewClientData data) throws Exception {
             return data instanceof OnPageStarted;
           }
         })
         .take(1)
         .doOnSubscribe(new Consumer<Disposable>() {
-          @Override public void accept(Disposable disposable) throws Exception {
+          @Override
+          public void accept(Disposable disposable) throws Exception {
             activity.webview.loadUrl("https://www.google.com/");
           }
         })
