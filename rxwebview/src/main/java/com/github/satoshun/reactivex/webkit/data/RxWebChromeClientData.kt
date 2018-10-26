@@ -128,7 +128,7 @@ class OnGeolocationPermissionsHidePrompt : RxWebChromeClientData
 
 class OnProgressChanged(val newProgress: Int) : RxWebChromeClientData
 
-class OnPageStarted(val url: String, val favicon: Bitmap) : RxWebViewClientData
+class OnPageStarted(val url: String, val favicon: Bitmap?) : RxWebViewClientData
 
 class OnJsTimeout : RxWebChromeClientData
 
