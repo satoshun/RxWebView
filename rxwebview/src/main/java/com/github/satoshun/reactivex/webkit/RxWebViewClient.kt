@@ -60,7 +60,6 @@ private class AllOnObservable(
   private val webView: WebView,
   private val delegate: WebViewClient?
 ) : Observable<RxWebViewClientData>() {
-
   override fun subscribeActual(observer: Observer<in RxWebViewClientData>) {
     MainThreadDisposable.verifyMainThread()
 

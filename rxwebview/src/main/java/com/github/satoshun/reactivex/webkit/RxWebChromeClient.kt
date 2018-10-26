@@ -140,7 +140,7 @@ private class AllChromeOnObservable(
       } else {
         super.onHideCustomView()
       }
-      observer.onNext(OnHideCustomView())
+      observer.onNext(OnHideCustomView)
     }
 
     override fun onCreateWindow(view: WebView, isDialog: Boolean, isUserGesture: Boolean, resultMsg: Message): Boolean {
@@ -159,7 +159,7 @@ private class AllChromeOnObservable(
       } else {
         super.onRequestFocus(view)
       }
-      observer.onNext(OnRequestFocus())
+      observer.onNext(OnRequestFocus)
     }
 
     override fun onCloseWindow(window: WebView) {
@@ -168,7 +168,7 @@ private class AllChromeOnObservable(
       } else {
         super.onCloseWindow(window)
       }
-      observer.onNext(OnCloseWindow())
+      observer.onNext(OnCloseWindow)
     }
 
     override fun onJsAlert(view: WebView, url: String, message: String, result: JsResult): Boolean {
@@ -263,7 +263,7 @@ private class AllChromeOnObservable(
       } else {
         super.onGeolocationPermissionsHidePrompt()
       }
-      observer.onNext(OnGeolocationPermissionsHidePrompt())
+      observer.onNext(OnGeolocationPermissionsHidePrompt)
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -287,7 +287,7 @@ private class AllChromeOnObservable(
     }
 
     override fun onJsTimeout(): Boolean {
-      observer.onNext(OnJsTimeout())
+      observer.onNext(OnJsTimeout)
       return delegate?.onJsTimeout() ?: super.onJsTimeout()
     }
 
@@ -306,7 +306,7 @@ private class AllChromeOnObservable(
     }
 
     override fun getDefaultVideoPoster(): Bitmap? {
-      observer.onNext(GetDefaultVideoPoster())
+      observer.onNext(GetDefaultVideoPoster)
       return if (delegate != null) {
         delegate.defaultVideoPoster
       } else {
@@ -315,7 +315,7 @@ private class AllChromeOnObservable(
     }
 
     override fun getVideoLoadingProgressView(): View? {
-      observer.onNext(GetVideoLoadingProgressView())
+      observer.onNext(GetVideoLoadingProgressView)
       return if (delegate != null) {
         delegate.videoLoadingProgressView
       } else {
