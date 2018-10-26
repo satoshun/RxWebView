@@ -49,6 +49,13 @@ import io.reactivex.Observer
 import io.reactivex.android.MainThreadDisposable
 
 /**
+ * Create an observable of WebView from WebChromeClient.
+ */
+@CheckResult
+fun WebView.chromeEvents(delegate: WebChromeClient? = null): Observable<RxWebChromeClientData> =
+    RxWebChromeClient.events(this, delegate)
+
+/**
  * static factory methods for creating [io.reactivex.Observable]
  */
 object RxWebChromeClient {

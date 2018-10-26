@@ -56,6 +56,15 @@ object RxWebViewClient {
   }
 }
 
+/**
+ * Create an observable which emits from `WebView` based on WebViewClient event.
+ * data types are defined into [com.github.satoshun.reactivex.webkit.data].
+ * It's corresponding to [android.webkit.WebViewClient] event.
+ */
+@CheckResult
+fun WebView.events(delegate: WebViewClient? = null): Observable<RxWebViewClientData> =
+    RxWebViewClient.events(this, delegate)
+
 private class AllOnObservable(
   private val webView: WebView,
   private val delegate: WebViewClient?
