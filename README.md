@@ -4,44 +4,40 @@
 
 # RxWebView
 
-RxJava2 binding APIs for Android WebView.
+RxJava2 binding APIs for Android WebView with Kotlin.
 
 ## install
 
 ```groovy
 implementation "com.github.satoshun.RxWebView:rxwebview:${latest-version}"
-
-// for Kotlin user
-implementation "com.github.satoshun.RxWebView:rxwebview-kotlin:${latest-version}"
 ```
 
 ## usage
 
 ### WebViewClient
 
-If you want a all events from [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient), we can use a `RxWebViewClient#events`.
+If you want a all events from [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient),
+we can use a `RxWebViewClient#events` method.
 
-```java
-WebView webview = new WebView(context);
-RxWebViewClient.events(webview)
-    .ofType(ANY_DATA_TYPE.class)
-    .subscribe();
+```kotlin
+val webview = WebView(context)
+webview.events().subscribe() // emits all WebView eventss
 ```
 
-If you want a specific event like a `onPageFinished`, we can use a `RxWebViewClient#events` + `ofType` operator.
+If you want a specific event like a `onPageFinished`,
+we can use a `RxWebViewClient#events` + `ofType` operator.
 
-```java
-WebView webview = new WebView(context);
-RxWebViewClient.events(webview)
-    .ofType(OnPageFinished.class) // only OnPageFinished
-    .subscribe();
+```kotlin
+val webview = WebView(context)
+webView.events()
+    .ofType(OnPageFinished::class.java) // only OnPageFinished
+    .subscribe()
 ```
 
-If you want to a hook events from WebViewClient, we can give a custom WebViewClient.
+If you want to a hook events from `WebViewClient`, we can give a custom WebViewClient.
 
-```java
-RxWebViewClient.events(webview, new CustomWebViewClient())
-    .subscribe();
+```kotlin
+webview.events(delegate = CustomWebViewClient()).subscribe()
 ```
 
 All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data).
@@ -50,10 +46,15 @@ All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reac
 
 If you want a all events from [WebChromeClient](https://developer.android.com/reference/android/webkit/WebChromeClient).
 
-```java
-WebView webview = new WebView(context);
-RxWebChromeClient.events(webview)
-    .subscribe();
+```kotlin
+val webview = WebView(context)
+webview.chromeEvents().subscribe()
+```
+
+If you want to a hook events from `WebChromeClient`, we can give a custom WebChromeClient.
+
+```kotlin
+webview.chromeEvents(delegate = customWebChromeClient).subscribe()
 ```
 
 All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reactivex/webkit/data)
