@@ -4,7 +4,7 @@ object Vers {
   val target_sdk = 28
 }
 
-private const val KOTLIN = "1.2.71"
+private const val KOTLIN = "1.3.0"
 
 object Libs {
   val android_plugin = "com.android.tools.build:gradle:3.2.1"
