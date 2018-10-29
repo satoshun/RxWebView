@@ -20,11 +20,11 @@ internal class RxWebViewClientTest {
 
   @Test
   fun events() {
-    val data = RxWebViewClient.events(activity.webview)
+    val data = RxWebViewClient.events(activity.webView)
         .ofType(OnPageStarted::class.java)
         .take(1)
         .doOnSubscribe {
-          activity.webview.loadUrl("https://www.google.com/")
+          activity.webView.loadUrl("https://www.google.com/")
         }
         .subscribeOn(AndroidSchedulers.mainThread())
         .test()

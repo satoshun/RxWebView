@@ -16,9 +16,9 @@ internal class RxWebChromeClientTest {
 
   @Test
   fun events() {
-    RxWebChromeClient.events(activity.webview)
+    RxWebChromeClient.events(activity.webView)
         .doOnSubscribe {
-          activity.webview.loadUrl("https://www.google.com/")
+          activity.webView.loadUrl("https://www.google.com/")
         }
         .subscribeOn(AndroidSchedulers.mainThread())
         .ofType(OnProgressChanged::class.java)
