@@ -4,7 +4,7 @@ object Vers {
   val target_sdk = 28
 }
 
-private const val KOTLIN = "1.2.71"
+private const val KOTLIN = "1.3.0"
 
 object Libs {
   val android_plugin = "com.android.tools.build:gradle:3.2.1"
@@ -24,6 +24,7 @@ object Libs {
   val test_runner = "androidx.test:runner:1.1.0"
   val test_rule = "androidx.test:rules:1.1.0"
   val espresso = "androidx.test.espresso:espresso-core:3.1.0"
+  val test_junit_runner = "androidx.test.ext:junit:1.0.0"
 
   val truth = "com.google.truth:truth:0.42"
   val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"

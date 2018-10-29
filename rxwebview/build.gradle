@@ -44,6 +44,7 @@ dependencies {
 
   androidTestImplementation Libs.test_rule
   androidTestImplementation Libs.test_runner
+  androidTestImplementation Libs.test_junit_runner
   androidTestImplementation(Libs.espresso, {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
