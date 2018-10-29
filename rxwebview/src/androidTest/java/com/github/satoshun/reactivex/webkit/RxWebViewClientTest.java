@@ -1,8 +1,8 @@
 package com.github.satoshun.reactivex.webkit;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 import com.github.satoshun.reactivex.webkit.data.OnPageStarted;
 import com.github.satoshun.reactivex.webkit.data.RxWebViewClientData;
 import io.reactivex.android.schedulers.AndroidSchedulers;
