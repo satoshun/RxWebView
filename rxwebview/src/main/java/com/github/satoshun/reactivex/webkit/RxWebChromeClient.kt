@@ -63,6 +63,7 @@ object RxWebChromeClient {
    * Create an observable of WebView from WebChromeClient.
    */
   @CheckResult
+  @JvmStatic
   @JvmOverloads fun events(webView: WebView, delegate: WebChromeClient? = null): Observable<RxWebChromeClientData> {
     return AllChromeOnObservable(webView, delegate)
   }
