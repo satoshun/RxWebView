@@ -1,15 +1,17 @@
 subprojects {
   buildscript {
     repositories {
-      jcenter()
       google()
+      jcenter()
       gradlePluginPortal()
+      maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
   }
 
   repositories {
-    jcenter()
     google()
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
 
   group = GROUP

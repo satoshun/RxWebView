@@ -4,7 +4,7 @@ buildscript {
     classpath Libs.kotlin_plugin
     classpath Libs.dokka_plugin
     classpath Libs.ktlint_plugin
-    classpath Libs.publish_plugin
+//    classpath Libs.publish_plugin
   }
 }
 
@@ -13,7 +13,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'jacoco'
 apply plugin: 'org.jlleitschuh.gradle.ktlint'
 apply plugin: 'org.jetbrains.dokka-android'
-apply plugin: "com.vanniktech.maven.publish"
+//apply plugin: "com.vanniktech.maven.publish"
 
 android {
   compileSdkVersion Vers.compile_sdk
@@ -49,3 +49,5 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push-kotlin.gradle')

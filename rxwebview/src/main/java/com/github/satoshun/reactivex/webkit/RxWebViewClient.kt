@@ -51,6 +51,7 @@ object RxWebViewClient {
    * It's corresponding to WebViewClient event.
    */
   @CheckResult
+  @JvmStatic
   @JvmOverloads fun events(webView: WebView, delegate: WebViewClient? = null): Observable<RxWebViewClientData> {
     return AllOnObservable(webView, delegate)
   }

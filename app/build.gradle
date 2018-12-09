@@ -28,10 +28,12 @@ android {
 
 dependencies {
   implementation project(':rxwebview')
-//  implementation "com.github.satoshun.RxWebView:rxwebview:3.0.0-SNAPSHOT"
+//  implementation "com.github.satoshun.RxWebView:rxwebview:2.3.1-SNAPSHOT"
 
   implementation Libs.kotlin
+
   implementation Libs.rx_java
   implementation Libs.rx_android
+
   implementation Libs.appcompat
 }
