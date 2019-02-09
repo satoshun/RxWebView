@@ -4,10 +4,10 @@ object Vers {
   val target_sdk = 28
 }
 
-private const val KOTLIN = "1.3.11"
+private const val KOTLIN = "1.3.21"
 
 object Libs {
-  val android_plugin = "com.android.tools.build:gradle:3.2.1"
+  val android_plugin = "com.android.tools.build:gradle:3.3.1"
   val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN"
   val dokka_plugin = "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
   val ktlint_plugin = "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:4.1.0"
