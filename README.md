@@ -61,7 +61,8 @@ All data type defined in [this](rxwebview/src/main/java/com/github/satoshun/reac
 
 ## more information
 
-- [sample source code](app/src/main/java/com/github/satoshun/reactivex/webkit/example)
+- [Kotlin sample source code](app/src/main/java/com/github/satoshun/reactivex/webkit/example)
+- [Java sample source code](app-java/src/main/java/com/github/satoshun/reactivex/webkit/example)
 
 ## etc
 
